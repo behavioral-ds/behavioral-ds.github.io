@@ -1,0 +1,34 @@
+{{ $ := .root }}
+{{ $page := .page }}
+
+<!-- Accomplishments widget -->
+<div class="row">
+  <div class="col-12 {{ if $page.Params.main_page }}col-lg-4{{else}}col-lg-12{{end}} section-heading" style="margin-bottom: 1rem;">
+    <h1>{{ with $page.Title }}{{ . | markdownify }}{{ end }}</h1>
+    {{ with $page.Params.subtitle }}<p>{{ . | markdownify }}</p>{{ end }}
+  </div>
+  <div class="col-12 {{ if $page.Params.main_page }}col-lg-8{{else}}col-lg-12{{end}}">
+    {{ with $page.Content }}{{ . }}{{ end }}
+    <ul style="list-style: none">
+    {{/*  {{ if $page.Params.item }}  */}}
+    {{ with $.Site.Data.news }}
+    {{ range first $page.Params.limit (sort .item ".date" "desc") }}
+      <li>
+        <div style="margin-bottom: 1rem;">
+            <div class="row">
+              <div class="{{ if $page.Params.main_page }}col-lg-2{{else}}col-lg-1{{end}} col-2" style="font-style: italic;padding-right: 0rem;">{{ (time .date).Format ($page.Params.date_format | default "Jan 2006") }}</div>
+              <div class="{{ if $page.Params.main_page }}col-lg-10{{else}}col-lg-11{{end}} col-10">
+                {{with .description}}
+                  {{. | markdownify | emojify}}
+                {{end}}
+              </div>
+            </div>
+
+        </div>
+      </li>
+    {{end}}
+    {{end}}
+    {{/*  {{end}}  */}}
+    </ul>
+  </div>
+</div>

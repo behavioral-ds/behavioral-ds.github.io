@@ -18,7 +18,7 @@ organizations:
 - name: University of Technology Sydney
 
 # Short bio (displayed in user profile at end of posts)
-bio: test
+bio: I am a Ph.D. student from the Computational Media Lab at the Research School of Computer Science of The Australian National University and affiliated with Data61, CSIRO. I am supervised by Dr Marian-Andrei Rizoiu, Prof Lexing Xie and Dr Stephen Wan. My current research focuses on modeling information diffusion in social media. Specifically, I am working on understanding the connection between epidemic models and self-exciting point processes and quantifying online diffusions with tools from the connection. 
 
 interests:
 - Artificial Intelligence

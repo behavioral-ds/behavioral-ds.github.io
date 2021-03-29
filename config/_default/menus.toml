@@ -9,14 +9,14 @@
   weight = 10
 
 [[main]]
-  name = "Publication"
+  name = "Publications"
   url = "/publication"
   weight = 20
 
-[[main]]
-  name = "Research"
-  url = "/research"
-  weight = 30
+#[[main]]
+#  name = "Research"
+#  url = "/research"
+#  weight = 30
 
 [[main]]
   name = "Blog"
@@ -29,18 +29,23 @@
   weight = 50
 
 [[main]]
-  name = "Tool"
+  name = "Software"
   url = "/tool"
   weight = 55
 
 [[main]]
+  name = "Reading"
+  url = "/reading"
+  weight = 65
+
+[[main]]
   name = "Contact"
   url = "/contact"
-  weight = 60
+  weight = 70
 
 [[main]]
   name = "<i class=\"fab fa-github\" style=\"color: #333; font-size: 1rem;\"></i>"
   post = ""
   url = "https://github.com/behavioral-ds"
-  weight = 70
+  weight = 75
 

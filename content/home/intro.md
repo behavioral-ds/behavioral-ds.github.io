@@ -8,8 +8,9 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 15  # Order that this section will appear.
 
-title = "Behavioural Data Science"
-subtitle = ""
+title = "Behavioral Data Science lab"
+# part of the UTS Data Science Institute
+subtitle = "" 
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
@@ -50,11 +51,18 @@ subtitle = ""
  css_class = ""
 +++
 
-Welcome to the homepage of the Behavioural Data Science lab at the University of Technology Sydney.  We develop core methods in machine learning and optimization. We also formulate and solve problems in understanding online behavior, multimedia and the broader implications of machine intelligence. (copied dummy text)
+The Behavioral Data Science lab is a research group in the UTS Data Science Institute at the [University of Technology Sydney](https://www.uts.edu.au/), Australia.
 
-Recent News:
-  - test1
-  - test2
-  - test3
-  - test4
+Our research aims to make sense of large amounts of behavioral data, to understand online behavior and its offline effects. We develop core methods in machine learning and optimization in order to distill heaps of raw data into meaningful insights in areas including
+* social and information network analysis,
+* information diffusion across social networks,
+* mis- and dis-information spreading,
+* tomorrow's labour markets and labour transitions,
+* machine learning,
+* computational social science,
+* data mining, and
+* natural language processing
 
+If you're interested in working with us, <a href="/contact">get in touch</a>!
+
+<!--Our work is partly funded by grants from the Swiss National Science Foundation, the Swiss Data Science Center, Microsoft, and CROSS, and by generous awards from Google and Facebook.-->

@@ -12,8 +12,6 @@ links:
   icon_pack: fab
   name: Code
   url: https://github.com/behavioral-ds/evently
-header:
-  image: "featured2.png"
 ---
 
 ## Introduction
@@ -146,19 +144,11 @@ or <Marian-Andrei@rizoiu.eu>.
 
 ## Reference
 
-> \[1\] Rizoiu, M. A., Lee, Y., Mishra, S., & Xie, L. (2017, December).
-> Hawkes processes for events in social media. In Frontiers of
-> Multimedia Research (pp. 191-218). Association for Computing Machinery
-> and Morgan & Claypool.  
-> \[2\] Rizoiu, M. A., Mishra, S., Kong, Q., Carman, M., & Xie, L.
-> (2018, April). SIR-Hawkes: Linking epidemic models and Hawkes
-> processes to model diffusions in finite populations. In Proceedings of
-> the 2018 World Wide Web Conference (pp. 419-428). International World
-> Wide Web Conferences Steering Committee.  
-> \[3\] Mishra, S., Rizoiu, M. A., & Xie, L. (2016, October). Feature
-> driven and point process approaches for popularity prediction. In
-> Proceedings of the 25th ACM International on Conference on Information
-> and Knowledge Management (pp. 1069-1078). ACM.  
-> \[4\] Kong, Q., Rizoiu, M. A., & Xie, L. (2019). Modeling Information
-> Cascades with Self-exciting Processes via Generalized Epidemic Models.
-> arXiv preprint arXiv:1910.05451.
+\[1\] Rizoiu, M. A., Lee, Y., Mishra, S., & Xie, L. (2017, December). Hawkes processes for events in social media. In Frontiers of Multimedia Research (pp. 191-218). Association for Computing Machinery
+and Morgan & Claypool.  
+\[2\] Rizoiu, M. A., Mishra, S., Kong, Q., Carman, M., & Xie, L.
+(2018, April). SIR-Hawkes: Linking epidemic models and Hawkes processes to model diffusions in finite populations. In Proceedings of the 2018 World Wide Web Conference (pp. 419-428). International World Wide Web Conferences Steering Committee.  
+\[3\] Mishra, S., Rizoiu, M. A., & Xie, L. (2016, October). Feature
+driven and point process approaches for popularity prediction. In Proceedings of the 25th ACM International on Conference on Information and Knowledge Management (pp. 1069-1078). ACM.  
+\[4\] Kong, Q., Rizoiu, M. A., & Xie, L. (2019). Modeling Information
+Cascades with Self-exciting Processes via Generalized Epidemic Models. arXiv preprint arXiv:1910.05451.

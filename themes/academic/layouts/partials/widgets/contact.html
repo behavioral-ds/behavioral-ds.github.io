@@ -64,8 +64,17 @@
       {{ end }}
 
       {{ $addr_formatted := "" }}{{/* Scoping for maps. */}}
-      {{ if $data.address.street | or $data.address.city | or $data.address.region | or $data.address.postcode | or $data.address.country }}
-        {{ $addr_formatted = partial "functions/get_address" (dict "root" . "address" $data.address) }}
+      {{ if $data.address.first.street | or $data.address.first.city | or $data.address.first.region | or $data.address.first.postcode | or $data.address.first.country }}
+        {{ $addr_formatted = partial "functions/get_address" (dict "root" . "address" $data.address.first) }}
+        <li>
+          <i class="fa-li fas fa-map-marker" style='font-size:1.6rem' aria-hidden="true"></i>
+          <span id="person-address">{{$addr_formatted}}</span>
+        </li>
+      {{ end }}
+
+      {{ $addr_formatted := "" }}{{/* Scoping for maps. */}}
+      {{ if $data.address.second.street | or $data.address.second.city | or $data.address.second.region | or $data.address.second.postcode | or $data.address.second.country }}
+        {{ $addr_formatted = partial "functions/get_address" (dict "root" . "address" $data.address.second) }}
         <li>
           <i class="fa-li fas fa-map-marker" style='font-size:1.6rem' aria-hidden="true"></i>
           <span id="person-address">{{$addr_formatted}}</span>
@@ -124,6 +133,10 @@
 
     {{ if and site.Params.map.engine $data.coordinates.latitude }}
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.2239672121095!2d151.19808541531592!3d-33.88388528065194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae2647d03b39%3A0xc48ec5863d7d628c!2sUTS%20Central%20(Building%202)!5e0!3m2!1sen!2sau!4v1577661350978!5m2!1sen!2sau" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    {{ end }}
+
+    {{ if and site.Params.map.engine $data.coordinates.latitude }}
+    <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=The%20Australian%20National%20University+(ANU)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
     {{ end }}
 
   </div>

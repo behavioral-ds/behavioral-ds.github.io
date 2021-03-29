@@ -10,7 +10,7 @@ authors:
 superuser: false
 
 # Role/position
-role: Undergraduate Honours student
+role: Undergraduate Honours student @ ANU
 
 # Organizations/Affiliations
 organizations:
@@ -18,7 +18,11 @@ organizations:
 - name: University of Technology Sydney
 
 # Short bio (displayed in user profile at end of posts)
-bio: I am currently a undergradute student doing honours project under the supervision of Dr. Marian-Andrei Rizoiu
+body: | 
+
+  **Next position after UTS:** Yaozhong continued his undergraduate studies at the Australian National University.
+ 
+bio: I am currently a undergradute student in Australian National University,devoting to complete bachelor's degree of Advanced Computing in College of Engineering & Computer Science. My honours project is about extracting emerging skills in online labour market which mainly applies Named Entity Recognition (NER) under the supervision of Dr. Marian-Andrei Rizoiu.
 
 interests:
 - Artificial Intelligence
@@ -31,10 +35,10 @@ interests:
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
 #   form "mailto:your-email@example.com" or "#contact" for contact widget.
-# social:
-# - icon: envelope
-#   icon_pack: fas
-#   link: '#contact'  # For a direct email link, use "mailto:test@example.org".
+social:
+ - icon: envelope
+   icon_pack: fas
+   link: mailto:yaozhong.liu@uts.edu.au.
 
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
@@ -52,5 +56,5 @@ interests:
 #                  "Visitors",
 #                  "Alumni"]
 user_groups:
-- Honours Students
+- Alumni
 ---
