@@ -1140,3 +1140,49 @@
    year = {2024},
 }
 
+@inproceedings{Tian2025,
+   abstract = {In today's digital age, conspiracies and information campaigns can emerge rapidly and erode social and democratic cohesion. While recent deep learning approaches have made progress in modeling engagement through language and propagation models, they struggle with irregularly sampled data and early trajectory assessment. We present IC-Mamba, a novel state space model that forecasts social media engagement by modeling interval-censored data with integrated temporal embeddings. Our model excels at predicting engagement patterns within the crucial first 15-30 minutes of posting (RMSE 0.118-0.143), enabling rapid assessment of content reach. By incorporating interval-censored modeling into the state space framework, IC-Mamba captures fine-grained temporal dynamics of engagement growth, achieving a 4.72% improvement over state-of-the-art across multiple engagement metrics (likes, shares, comments, and emojis). Our experiments demonstrate IC-Mamba's effectiveness in forecasting both post-level dynamics and broader narrative patterns (F1 0.508-0.751 for narrative-level predictions). The model maintains strong predictive performance across extended time horizons, successfully forecasting opinion-level engagement up to 28 days ahead using observation windows of 3-10 days. These capabilities enable earlier identification of potentially problematic content, providing crucial lead time for designing and implementing countermeasures. Code is available at: https://github.com/ltian678/ic-mamba. An interactive dashboard demonstrating our results is available at: https://ic-mamba.behavioral-ds.science.},
+   author = {Lin Tian and Emily Booth and Francesco Bailo and Julian Droogan and Marian-Andrei Rizoiu},
+   doi = {10.1145/3696410.3714527},
+   booktitle = {Proceedings of the International Web Conference (WWW)},
+   month = {2},
+   title = {Before It's Too Late: A State Space Model for the Early Prediction of Misinformation and Disinformation Engagement},
+   url = {https://doi.org/10.1145/3696410.3714527},
+   url_Paper = {https://arxiv.org/pdf/2502.04655},
+   year = {2025}
+}
+@inproceedings{LanqinYuan2025,
+   abstract = {Online communities play a critical role in shaping societal discourse and influencing collective behavior in the real world. The tendency for people to connect with others who share similar characteristics and views, known as homophily, plays a key role in the formation of echo chambers which further amplify polarization and division. Existing works examining homophily in online communities traditionally infer it using content- or adjacency-based approaches, such as constructing explicit interaction networks or performing topic analysis. These methods fall short for platforms where interaction networks cannot be easily constructed and fail to capture the complex nature of user interactions across the platform. This work introduces a novel approach for quantifying user homophily. We first use an Inverse Reinforcement Learning (IRL) framework to infer users' policies, then use these policies as a measure of behavioral homophily. We apply our method to Reddit, conducting a case study across 5.9 million interactions over six years, demonstrating how this approach uncovers distinct behavioral patterns and user roles that vary across different communities. We further validate our behavioral homophily measure against traditional content-based homophily, offering a powerful method for analyzing social media dynamics and their broader societal implications. We find, among others, that users can behave very similarly (high behavioral homophily) when discussing entirely different topics like soccer vs e-sports (low topical homophily), and that there is an entire class of users on Reddit whose purpose seems to be to disagree with others.},
+   author = {Lanqin Yuan and Philipp Schneider and Marian-Andrei Rizoiu},
+   city = {Sydney},
+   booktitle = {Proceedings of the International Web Conference (WWW)},
+   title = {Behavioral Homophily in Social Media via Inverse Reinforcement Learning: A Reddit Case Study},
+   url = {https://dx.doi.org/10.1145/3696410.3714618},
+   url_Paper = {https://arxiv.org/pdf/2502.02943},
+   year = {2025}
+}
+@article{Calderon2025,
+   abstract = {This work introduces a novel multivariate temporal point process, the Partial Mean Behavior Poisson (PMBP) process, which can be leveraged to fit the multivariate Hawkes process to partially interval-censored data consisting of a mix of event timestamps on a subset of dimensions and interval-censored event counts on the complementary dimensions. First, we define the PMBP process via its conditional intensity and derive the regularity conditions for subcriticality. We show that both the Hawkes process and the MBP process (Rizoiu et al. (2021)) are special cases of the PMBP process. Second, we provide numerical schemes that enable calculating the conditional intensity and sampling event histories of the PMBP process. Third, we demonstrate the applicability of the PMBP process by empirical testing using synthetic and real-world datasets: We test the capability of the PMBP process to recover multivariate Hawkes parameters given sample event histories of the Hawkes process. Next, we evaluate the PMBP process on the Youtube popularity prediction task and show that it outperforms the current state-of-the-art Hawkes Intensity process (Rizoiu et al. (2017b)). Lastly, on a curated dataset of COVID19 daily case counts and COVID19-related news articles for a sample of countries, we show that clustering on the PMBP-fitted parameters enables a categorization of countries with respect to the country-level interaction of cases and news reporting.},
+   author = {Pio Calderon and Alexander Soen and Marian-Andrei Rizoiu},
+   doi = {10.1109/TCSS.2024.3486117},
+   issn = {2329-924X},
+   issue = {1},
+   journal = {IEEE Transactions on Computational Social Systems},
+   month = {2},
+   pages = {25-37},
+   title = {Linking Across Data Granularity: Fitting Multivariate Hawkes Processes to Partially Interval-Censored Data},
+   volume = {12},
+   url = {https://ieeexplore.ieee.org/document/10750824/},
+   url_Paper = {https://arxiv.org/pdf/2111.02062},
+   year = {2025}
+}
+@inproceedings{Ram2025,
+   abstract = {In democratic countries, the ideology landscape is foundational to individual and collective political action; conversely, fringe ideology drives Ideologically Motivated Violent Extremism (IMVE). Therefore, quantifying ideology is a crucial first step to an ocean of downstream problems, such as; understanding and countering IMVE, detecting and intervening in disinformation campaigns, and broader empirical opinion dynamics modeling. However, online ideology detection faces two significant hindrances. Firstly, the ground truth that forms the basis for ideology detection is often prohibitively labor-intensive for practitioners to collect, requires access to domain experts and is specific to the context of its collection (i.e., time, location, and platform). Secondly, to circumvent this expense, researchers generate ground truth via other ideological signals (like hashtags used or politicians followed). However, the bias this introduces has not been quantified and often still requires expert intervention. This work presents an end-to-end ideology detection pipeline applicable to large-scale datasets. We construct context-agnostic and automatic ideological signals from widely available media slant data; show the derived pipeline is performant, compared to pipelines of common ideology signals and state-of-the-art baselines; employ the pipeline for left-right ideology, and (the more concerning) detection of extreme ideologies; generate psychosocial profiles of the inferred ideological groups; and, generate insights into their morality and preoccupations.},
+   author = {Rohit Ram and Emma Thomas and David Kernot and Marian-Andrei Rizoiu},
+   booktitle = {International AAAI Conference on Web and Social Media (ICWSM)},
+   publisher = {AAAI},
+   title = {Detecting Extreme Ideologies in Shifting Landscapes: an Automatic & Context-Agnostic Approach},
+   url_Paper = {http://arxiv.org/pdf/2208.04097.pdf},
+   year = {2025}
+}
+
