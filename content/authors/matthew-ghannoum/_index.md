@@ -10,7 +10,7 @@ authors:
 superuser: false
 
 # Role/position
-role: Undergraduate Honours student
+role: Undergraduate Honours student @UTS
 
 # Organizations/Affiliations
 organizations:
@@ -18,6 +18,12 @@ organizations:
 
 # Short bio (displayed in user profile at end of posts)
 # bio: I am a Ph.D. student from the Computational Media Lab at the Research School of Computer Science of The Australian National University and affiliated with Data61, CSIRO. I am supervised by Dr Marian-Andrei Rizoiu, Prof Lexing Xie and Dr Stephen Wan. My current research focuses on modeling information diffusion in social media. Specifically, I am working on understanding the connection between epidemic models and self-exciting point processes and quantifying online diffusions with tools from the connection. 
+body: | 
+
+  I am an undergraduate honours student at The University of Technology Sydney studying a Bachelor of Computer Science, majoring in Artificial Intelligence and Data Analytics. I am currently undertaking my Honours Project supervised by Dr Marian-Andrei Rizoiu.
+
+  **Position at UTS:** Matthew was an Honours student and research assistant with the Behavioral Data Science lab in UTS.
+
 bio: I am an undergraduate honours student at The University of Technology Sydney studying a Bachelor of Computer Science, majoring in Artificial Intelligence and Data Analytics. I am currently undertaking my Honours Project supervised by Dr Marian-Andrei Rizoiu.
 
 interests:
@@ -59,7 +65,7 @@ social:
 #                  "Visitors",
 #                  "Alumni"]
 user_groups:
-- Honours Students
+- Alumni
 
 weight: 10
 ---
