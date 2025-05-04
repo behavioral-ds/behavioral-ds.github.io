@@ -33,7 +33,7 @@ interests:
 social:
 - icon: envelope
   icon_pack: fas
-  link:  "mailto:lanqin.yuan@anu.edu.au"
+  link:  "mailto:lanqin.yuan@student.uts.edu.au"
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/EMPaThy789

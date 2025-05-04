@@ -1,6 +1,6 @@
 ---
 # Display name
-name: Huixiang Fu
+name: Huixiang (Freda) Fu
 
 # Username (this should match the folder name)
 authors:
@@ -17,11 +17,23 @@ organizations:
 - name: University of Technology Sydney
 
 # Short bio (displayed in user profile at end of posts)
-bio: Huixiang recentlty started her PhD on understanding the human factors that increase misinformation spread, and what to do about it. 
+bio: 
+ I’m a Ph.D. student at the University of Technology Sydney, supervised by Dr. Marian-Andrei Rizoiu. My research focuses on understanding the human factors that drive the spread of misinformation and exploring how we can effectively mitigate it.
+
+
+ Before joining the Behavioral Data Science Lab, I worked as a Data Development Engineer at the fintech company Alipay, where I helped build an LLM-powered data asset agent to improve how users search for and interact with data resources. I’ve also interned as a Machine Learning Engineer at TikTok and Didi Global. At TikTok, I worked on boosting recommendations for long-tail, high-quality videos using NLP techniques to support a healthier content ecosystem. At Didi, I contributed to implement strategies using ML models aimed at improving user engagement within the e-commerce recommendation system.
+ 
+
+ Outside of work, I’m passionate about the outdoors—whether it’s rock climbing, hiking, or diving (scuba or free diving), I’m always up for an adventure.
+
+
+ If you're interested in my research or want to connect over outdoor activities, feel free to reach out on **[Twitter](https://twitter.com/FuHuixiang)**.
 
 interests:
 - Human Cognitive Biases
 - Natural Language Processing (NLP)
+- Social Data Science
+- Artificial Intelligence
 
 
 # Social/Academic Networking
@@ -29,18 +41,18 @@ interests:
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
 #   form "mailto:your-email@example.com" or "#contact" for contact widget.
 social:
-# - icon: envelope
-#   icon_pack: fas
-#   link: '#contact'  # For a direct email link, use "mailto:test@example.org".
-# - icon: twitter
-#  icon_pack: fab
-# link: https://twitter.com/twistcraft
-# - icon: google-scholar
-#   icon_pack: ai
-#   link: https://scholar.google.com.au/citations?user=0EXa6lkAAAAJ&hl=en
+- icon: envelope
+  icon_pack: fas
+  link: 'huixiang.fu@student.uts.edu.au'  # For a direct email link, use "mailto:test@example.org".
+- icon: twitter
+  icon_pack: fab
+  link: https://twitter.com/FuHuixiang
+- icon: google-scholar
+  icon_pack: ai
+  link: https://scholar.google.com/citations?hl=zh-CN&user=ffhIZVAAAAAJ
 - icon: github
   icon_pack: fab
-  link: https://github.com/da-elia
+  link: https://github.com/HuixiangF
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # - icon: cv
