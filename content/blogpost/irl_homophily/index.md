@@ -10,7 +10,7 @@ image:
   placement: 1
   focal_point: "Center"
   preview_only: true
-summary: "We"
+summary: "Our article from the [The Conversation](https://theconversation.com/some-reddit-users-just-love-to-disagree-new-ai-powered-troll-spotting-algorithm-finds-255879) from our paper presented at WWW'25."
 
 ---
 This is a repost of our article from [The Conversation](https://theconversation.com/some-reddit-users-just-love-to-disagree-new-ai-powered-troll-spotting-algorithm-finds-255879).
