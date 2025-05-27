@@ -10,7 +10,7 @@ authors:
 superuser: false
 
 # Role/position
-role: Research Fellow<br/>(Postdoc)
+role: Research Fellow<br/>
 
 # Organizations/Affiliations
 organizations:
@@ -18,7 +18,17 @@ organizations:
 
 # Short bio (displayed in user profile at end of posts)
 # bio: I am a Ph.D. student from the Computational Media Lab at the Research School of Computer Science of The Australian National University and affiliated with Data61, CSIRO. I am supervised by Dr Marian-Andrei Rizoiu, Prof Lexing Xie and Dr Stephen Wan. My current research focuses on modeling information diffusion in social media. Specifically, I am working on understanding the connection between epidemic models and self-exciting point processes and quantifying online diffusions with tools from the connection. 
-bio: I am a reseracher in the Behavioral Data Science at the University of Technology Sydney. My current research focuses on information operations in social media.
+bio: |
+  I'm a geek at heart and a researcher by training.
+  My work lives at the intersection of AI, natural language processing, and social computing — with a particular obsession for understanding how misinformation spreads and how we might stop it.
+  I hold a PhD in Computer Science, and my research blends causal inference, transformer models, state-space models, and multi-agent systems (with a dash of adversarial trolls 🤖).
+
+  By day, I build explainable, robust deep learning models — including transformer-based architectures and large language models — to detect propaganda, coordinated manipulation, and misinformation online.  
+
+  By night (and often still by day), I write code, run experiments, and hack together visualizations to trace how information evolves across the web 🧑‍💻📊.
+
+  Explore my research at www.lintian.io  
+  Visit my terminal-style playground at www.lintian.me — where `sudo` makes the rules and every prompt is an adventure.
 
 interests:
 - Natural Language Processing
