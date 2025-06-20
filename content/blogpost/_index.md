@@ -1,5 +1,5 @@
 ---
-title: "Testing"
+title: "Research blogs from the Behavioral Data Science lab"
 
 # View.
 #   1 = List

@@ -41,7 +41,7 @@ In Proceedings of the ACM on Web Conference 2025 (pp. 5244-5254).
 
 Social media platforms don't provide continuous streams of engagement data. Instead, they offer snapshots at irregular intervals - what we call "interval-censored" data. As illustrated in Figure 1, while users interact with content continuously, platforms only report cumulative counts at discrete observation points.
 
-<img src="./sample_v9.png"  width="100%">
+<img src="./featured.png"  width="100%">
 
 <p style="text-align: center;"><em>Figure 1. Illustration of interval-censored social media engagement data. </em></p>
 
