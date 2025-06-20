@@ -1,1 +1,301 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Behavioral Data Science</title><link>https://www.behavioral-ds.science/authors/lin-tian/</link><atom:link href="https://www.behavioral-ds.science/authors/lin-tian/index.xml" rel="self" type="application/rss+xml"/><description>Behavioral Data Science</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2025</copyright><image><url>https://www.behavioral-ds.science/img/logo.png</url><title>Behavioral Data Science</title><link>https://www.behavioral-ds.science/authors/lin-tian/</link></image></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Behavioral Data Science</title><link>https://www.behavioral-ds.science/authors/lin-tian/</link><atom:link href="https://www.behavioral-ds.science/authors/lin-tian/index.xml" rel="self" type="application/rss+xml"/><description>Behavioral Data Science</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2025</copyright><lastBuildDate>Fri, 20 Jun 2025 00:00:00 +0000</lastBuildDate><image><url>https://www.behavioral-ds.science/img/logo.png</url><title>Behavioral Data Science</title><link>https://www.behavioral-ds.science/authors/lin-tian/</link></image><item><title>Before It's Too Late: A State Space Model for the Early Prediction of Misinformation and Disinformation Engagement</title><link>https://www.behavioral-ds.science/blogpost/ic-mamba/</link><pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate><guid>https://www.behavioral-ds.science/blogpost/ic-mamba/</guid><description>&lt;h2 id="introduction-from-4chan-to-capitol--when-online-conspiracies-turn-deadly">Introduction: From 4chan to Capitol - When Online Conspiracies Turn Deadly&lt;/h2>
+&lt;p>On October 28, 2017, an anonymous 4chan user made a cryptic post claiming Hillary Clinton would be arrested within days. Four years later, on January 6, 2021, devotees of the QAnon conspiracy theory - which originated from that very post - stormed the U.S. Capitol in an act that left five people dead and over 140 police officers injured.&lt;/p>
+&lt;p>This tragic event underscores a critical question:&lt;/p>
+&lt;p>&lt;strong>What if we could have seen this coming?&lt;/strong>&lt;/p>
+&lt;p>Today, we're introducing IC-Mamba, a state-of-the-art model that can forecast social media engagement patterns and detect viral misinformation before it spirals out of control. By modeling the complex temporal dynamics of how content spreads online, IC-Mamba achieves unprecedented accuracy in predicting which posts will go viral - often within just 15-30 minutes of publication.&lt;/p>
+&lt;p>&lt;strong>Paper citation:&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>Tian, L., Booth, E., Bailo, F., Droogan, J. and Rizoiu, M.A., 2025, April.
+Before It's Too Late: A State Space Model for the Early Prediction of Misinformation and Disinformation Engagement.
+In Proceedings of the ACM on Web Conference 2025 (pp. 5244-5254).
+&lt;/code>&lt;/pre>
+&lt;p>(&lt;em>see full paper here: &lt;a href="https://dl.acm.org/doi/abs/10.1145/3696410.3714527">&lt;a href="https://dl.acm.org/doi/abs/10.1145/3696410.3714527">https://dl.acm.org/doi/abs/10.1145/3696410.3714527&lt;/a>&lt;/a>&lt;/em>)&lt;/p>
+&lt;h2 id="the-challenge-understanding-intervalcensored-social-media-data">The Challenge: Understanding Interval-Censored Social Media Data&lt;/h2>
+&lt;p>Social media platforms don't provide continuous streams of engagement data. Instead, they offer snapshots at irregular intervals - what we call &amp;ldquo;interval-censored&amp;rdquo; data. As illustrated in Figure 1, while users interact with content continuously, platforms only report cumulative counts at discrete observation points.&lt;/p>
+&lt;img src="./featured.png" width="100%">
+&lt;p style="text-align: center;">&lt;em>Figure 1. Illustration of interval-censored social media engagement data. &lt;/em>&lt;/p>
+&lt;p>This creates unique challenges:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Irregular sampling&lt;/strong>: Observation intervals vary from minutes to hours&lt;/li>
+&lt;li>&lt;strong>Cumulative counts&lt;/strong>: We only see totals, not individual actions&lt;/li>
+&lt;li>&lt;strong>Multi-scale dynamics&lt;/strong>: Engagement patterns evolve from rapid initial spread to long-term influence&lt;/li>
+&lt;/ul>
+&lt;h2 id="icmamba-a-novel-architecture-for-early-detection">IC-Mamba: A Novel Architecture for Early Detection&lt;/h2>
+&lt;p>IC-Mamba combines three key components to tackle these challenges:&lt;/p>
+&lt;h4 id="1-timeaware-positional-embeddings">1. Time-Aware Positional Embeddings&lt;/h4>
+&lt;p>We developed a dual encoding strategy that captures both relative and absolute temporal relationships:&lt;/p>
+&lt;p>&lt;strong>Relative Temporal Encoding (RTE)&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>RTE(t, t_ref) = sin((t - t_ref) / σ)&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Absolute Temporal Encoding (ATE)&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>ATE(t) = [sin(t/10000^(2i/d)), cos(t/10000^(2i/d))]&lt;/code>&lt;/p>
+&lt;p>These embeddings are then modulated by observed engagement levels, allowing the model to learn characteristic temporal patterns associated with different levels of social impact.&lt;/p>
+&lt;h4 id="2-intervalcensored-state-space-modeling">2. Interval-Censored State Space Modeling&lt;/h4>
+&lt;p>We extend the Mamba architecture to handle varying-length censored intervals through:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Interval-aware vectors&lt;/strong> that encode time gaps and engagement counts&lt;/li>
+&lt;li>&lt;strong>Time-dependent state transitions&lt;/strong> using matrix exponentials&lt;/li>
+&lt;li>&lt;strong>Selective state processing&lt;/strong> through parallel pathways&lt;/li>
+&lt;/ul>
+&lt;img src="./architecture.png" width="100%">
+&lt;p style="text-align: center;">&lt;em>Figure 2. Overview of the IC-Mamba Architecture. &lt;/em>&lt;/p>
+&lt;h4 id="3-twotier-architecture">3. Two-Tier Architecture&lt;/h4>
+&lt;p>As shown in Figure 3, IC-Mamba uses a hierarchical approach:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Tier 1&lt;/strong>: Models individual post engagement dynamics&lt;/li>
+&lt;li>&lt;strong>Tier 2&lt;/strong>: Captures temporal interactions between posts sharing the same opinion&lt;/li>
+&lt;/ul>
+&lt;img src="./2-tier.png" width="80%">
+&lt;p style="text-align: center;">&lt;em>Figure 3. Overview of the Two-Tier IC-Mamba Architecture. &lt;/em>&lt;/p>
+&lt;h2 id="how-icmamba-works">How IC-Mamba Works&lt;/h2>
+&lt;h4 id="postlevel-engagement-prediction">Post-Level Engagement Prediction&lt;/h4>
+&lt;p>IC-Mamba's post-level prediction capabilities stem from its sophisticated handling of temporal dynamics and multi-modal information integration:&lt;/p>
+&lt;p>&lt;strong>1. Unified Sequence Representation&lt;/strong>&lt;br>
+The model creates a comprehensive embedding for each post by combining:&lt;/p>
+&lt;p>&lt;code>SE(p) = Encoder([CLS] ⊕ [text] ⊕ [SEP] ⊕ [user] ⊕ [SEP] ⊕ [timeline] ⊕ [SEP] ⊕ [engagement])&lt;/code>&lt;/p>
+&lt;p>This allows IC-Mamba to jointly learn from textual content, user metadata, and temporal engagement patterns in a single unified framework.&lt;/p>
+&lt;p>&lt;strong>2. Interval-Aware State Processing&lt;/strong>&lt;br>
+For each observation time, the model constructs an interval-aware vector that captures:&lt;/p>
+&lt;ul>
+&lt;li>Time since last observation (Δt⁻)&lt;/li>
+&lt;li>Current engagement levels (log(1 + e))&lt;/li>
+&lt;li>Forward interval length (Δt⁺)&lt;/li>
+&lt;li>Predicted next engagement&lt;/li>
+&lt;/ul>
+&lt;p>This rich representation enables the model to understand not just what happened, but when and how quickly it occurred.&lt;/p>
+&lt;p>&lt;strong>3. Adaptive State Transitions&lt;/strong>&lt;br>
+The state space model adapts to varying observation intervals through:&lt;/p>
+&lt;p>&lt;code>A_t(Δt) = exp(Δt · Ã_t)&lt;/code>&lt;/p>
+&lt;p>This matrix exponential formulation allows smooth interpolation across irregular time gaps, maintaining temporal coherence even with sparse observations.&lt;/p>
+&lt;h4 id="opinionlevel-classification">Opinion-Level Classification&lt;/h4>
+&lt;p>IC-Mamba's exceptional performance in identifying misinformation narratives comes from its two-tier architecture and sophisticated temporal modeling:&lt;/p>
+&lt;p>&lt;strong>1. Learning Opinion Signatures&lt;/strong>&lt;br>
+The first tier (IC-Mamba₁) processes individual posts to learn characteristic engagement patterns for different opinion types. Posts expressing similar opinions often exhibit similar temporal dynamics - for instance, conspiracy theories might show rapid initial spread followed by sustained engagement from dedicated communities.&lt;/p>
+&lt;p>&lt;strong>2. Capturing Narrative Evolution&lt;/strong>&lt;br>
+The second tier (IC-Mamba₂) models how opinions spread across multiple posts:&lt;/p>
+&lt;p>&lt;code>z_o = IC-Mamba₂((h_i, δt_i))&lt;/code>&lt;/p>
+&lt;p>Where:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>h_i&lt;/code>: Hidden representations from individual posts&lt;/li>
+&lt;li>&lt;code>δt_i&lt;/code>: Time intervals between posts expressing the same opinion&lt;/li>
+&lt;/ul>
+&lt;p>This allows the model to identify coordinated campaigns where multiple accounts push similar narratives with strategic timing.&lt;/p>
+&lt;p>&lt;strong>3. Multi-Scale Temporal Features&lt;/strong>&lt;br>
+The model learns to distinguish between:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Organic discussions&lt;/strong>: Natural ebb and flow of engagement, constrained by human attention limits&lt;/li>
+&lt;li>&lt;strong>Coordinated campaigns&lt;/strong>: Artificial amplification patterns, strategic timing, and sustained engagement beyond natural thresholds&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>4. Context-Aware Classification&lt;/strong>&lt;br>
+Unlike text-only approaches (like BERT), IC-Mamba incorporates:&lt;/p>
+&lt;ul>
+&lt;li>Engagement velocity (how quickly reactions accumulate)&lt;/li>
+&lt;li>User network effects (who's sharing and when)&lt;/li>
+&lt;li>Temporal coordination (synchronized posting patterns)&lt;/li>
+&lt;li>Cross-platform dynamics (when available)&lt;/li>
+&lt;/ul>
+&lt;p>This multi-faceted approach explains why IC-Mamba achieves F1 scores of 0.69-0.75 on organic content and maintains 0.51 performance even on sophisticated disinformation campaigns where text-only models fail dramatically.&lt;/p>
+&lt;h2 id="understanding-engagement-patterns-misinformation-vs-disinformation">Understanding Engagement Patterns: Misinformation vs. Disinformation&lt;/h2>
+&lt;p>Figure 4 reveals differences between misinformation discussions and coordinated campaigns:&lt;/p>
+&lt;img src="./figure4.png" width="120%">
+&lt;p style="text-align: center;">&lt;em>Figure 4: Engagement distribution patterns. &lt;/em>&lt;/p>
+&lt;!-- ![Figure 4: Engagement distribution patterns](./figure4.png) -->
+&lt;p>&lt;strong>Misinformation content (Climate Change)&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Follows human-scale constraints (~150 stable connections - Dunbar's number)&lt;/li>
+&lt;li>Plateaus around 10³ engagements&lt;/li>
+&lt;li>Uniform decay across engagement types&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Coordinated campaigns (DiN)&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Transcends natural limits, reaching 10⁶ engagements&lt;/li>
+&lt;li>Marked stratification, especially in likes&lt;/li>
+&lt;li>Self-similar temporal behavior across all observation windows&lt;/li>
+&lt;/ul>
+&lt;h2 id="realworld-impact-tracking-climate-change-is-a-un-hoax">Real-World Impact: Tracking &amp;ldquo;Climate Change is a UN Hoax&amp;rdquo;&lt;/h2>
+&lt;img src="./figure6.png" width="120%">
+&lt;p style="text-align: center;">&lt;em>Figure 5: Early prediction performance on "Climate Change is a UN Hoax". &lt;/em>&lt;/p>
+&lt;!-- ![Figure 6: Early prediction performance on "Climate Change is a UN Hoax".](./figure6.png) -->
+&lt;p>Figure 5a and 5b showcase IC-Mamba's ability to forecast opinion-level engagement over 28 days:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>7-day observation window&lt;/strong>: Predictions remain accurate with wider confidence intervals&lt;/li>
+&lt;li>&lt;strong>10-day observation window&lt;/strong>: Tighter confidence bands and improved long-term accuracy&lt;/li>
+&lt;li>&lt;strong>Multi-engagement tracking&lt;/strong>: Simultaneously forecasts likes, comments, shares, and emoji reactions&lt;/li>
+&lt;/ul>
+&lt;h2 id="technical-deep-dive-the-mathematics-behind-icmamba">Technical Deep Dive: The Mathematics Behind IC-Mamba&lt;/h2>
+&lt;h4 id="state-space-formulation">State Space Formulation&lt;/h4>
+&lt;p>The model uses time-dependent state transitions:&lt;/p>
+&lt;p>A_t(Δt) = exp(Δt · Ã_t) ∈ ℝ^(D_h × D_h)
+h_t = A_t(Δt)h_{t-1} + B_t x_t
+y_t = C_t^T h_t&lt;/p>
+&lt;p>Where:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>h_t&lt;/code>: Hidden state at time t&lt;/li>
+&lt;li>&lt;code>Δt&lt;/code>: Interval between observations&lt;/li>
+&lt;li>&lt;code>exp(Δt · Ã_t)&lt;/code>: Matrix exponential for smooth interpolation&lt;/li>
+&lt;/ul>
+&lt;h4 id="loss-functions">Loss Functions&lt;/h4>
+&lt;p>We combine two objectives for robust training:&lt;/p>
+&lt;p>&lt;strong>Engagement Prediction Loss&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>L_pred = (1/|P|) Σ_p Σ_j ||ê_{j+1} - e_{j+1}||²&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Temporal Coherence Loss&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>L_temp = (1/|P|) Σ_p Σ_j ||h_{j+1} - exp(Δt_j^+ · Ã_t)h_j||²&lt;/code>&lt;/p>
+&lt;h2 id="conclusion-a-tool-for-digital-defense">Conclusion: A Tool for Digital Defense&lt;/h2>
+&lt;p>IC-Mamba shows our ability to detect and predict the spread of misinformation and disinformation online. By providing early warnings &amp;ndash; often within 15-30 minutes of posting &amp;ndash; it offers platforms and researchers crucial time to:&lt;/p>
+&lt;ul>
+&lt;li>Identify potentially harmful content before mass exposure&lt;/li>
+&lt;li>Track coordinated information operations in real-time&lt;/li>
+&lt;li>Design and implement targeted countermeasures&lt;/li>
+&lt;li>Protect democratic discourse from manipulation&lt;/li>
+&lt;/ul>
+&lt;p>As misinformation continues to threaten social cohesion and democratic institutions, tools like IC-Mamba become essential components of our digital defense infrastructure. The model's ability to distinguish between organic discussions and coordinated campaigns, combined with its early detection capabilities, makes it a powerful ally in the fight against online manipulation.&lt;/p>
+&lt;p>The code is publicly available at &lt;a href="https://github.com/ltian678/ic-mamba">&lt;a href="https://github.com/ltian678/ic-mamba">https://github.com/ltian678/ic-mamba&lt;/a>&lt;/a>, and an interactive dashboard demonstrating the results can be accessed at &lt;a href="https://ic-mamba.behavioral-ds.science/">https://ic-mamba.behavioral-ds.science/&lt;/a>.&lt;/p>
+&lt;hr></description></item><item><title>Before It's Too Late: A State Space Model for the Early Prediction of Misinformation and Disinformation Engagement</title><link>https://www.behavioral-ds.science/theme2_content/ic-mamba/</link><pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate><guid>https://www.behavioral-ds.science/theme2_content/ic-mamba/</guid><description>&lt;h2 id="introduction-from-4chan-to-capitol--when-online-conspiracies-turn-deadly">Introduction: From 4chan to Capitol - When Online Conspiracies Turn Deadly&lt;/h2>
+&lt;p>On October 28, 2017, an anonymous 4chan user made a cryptic post claiming Hillary Clinton would be arrested within days. Four years later, on January 6, 2021, devotees of the QAnon conspiracy theory - which originated from that very post - stormed the U.S. Capitol in an act that left five people dead and over 140 police officers injured.&lt;/p>
+&lt;p>This tragic event underscores a critical question:&lt;/p>
+&lt;p>&lt;strong>What if we could have seen this coming?&lt;/strong>&lt;/p>
+&lt;p>Today, we're introducing IC-Mamba, a state-of-the-art model that can forecast social media engagement patterns and detect viral misinformation before it spirals out of control. By modeling the complex temporal dynamics of how content spreads online, IC-Mamba achieves unprecedented accuracy in predicting which posts will go viral - often within just 15-30 minutes of publication.&lt;/p>
+&lt;p>&lt;strong>Paper citation:&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>Tian, L., Booth, E., Bailo, F., Droogan, J. and Rizoiu, M.A., 2025, April.
+Before It's Too Late: A State Space Model for the Early Prediction of Misinformation and Disinformation Engagement.
+In Proceedings of the ACM on Web Conference 2025 (pp. 5244-5254).
+&lt;/code>&lt;/pre>
+&lt;p>(&lt;em>see full paper here: &lt;a href="https://dl.acm.org/doi/abs/10.1145/3696410.3714527">&lt;a href="https://dl.acm.org/doi/abs/10.1145/3696410.3714527">https://dl.acm.org/doi/abs/10.1145/3696410.3714527&lt;/a>&lt;/a>&lt;/em>)&lt;/p>
+&lt;h2 id="the-challenge-understanding-intervalcensored-social-media-data">The Challenge: Understanding Interval-Censored Social Media Data&lt;/h2>
+&lt;p>Social media platforms don't provide continuous streams of engagement data. Instead, they offer snapshots at irregular intervals - what we call &amp;ldquo;interval-censored&amp;rdquo; data. As illustrated in Figure 1, while users interact with content continuously, platforms only report cumulative counts at discrete observation points.&lt;/p>
+&lt;img src="./featured.png" width="100%">
+&lt;p style="text-align: center;">&lt;em>Figure 1. Illustration of interval-censored social media engagement data. &lt;/em>&lt;/p>
+&lt;p>This creates unique challenges:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Irregular sampling&lt;/strong>: Observation intervals vary from minutes to hours&lt;/li>
+&lt;li>&lt;strong>Cumulative counts&lt;/strong>: We only see totals, not individual actions&lt;/li>
+&lt;li>&lt;strong>Multi-scale dynamics&lt;/strong>: Engagement patterns evolve from rapid initial spread to long-term influence&lt;/li>
+&lt;/ul>
+&lt;h2 id="icmamba-a-novel-architecture-for-early-detection">IC-Mamba: A Novel Architecture for Early Detection&lt;/h2>
+&lt;p>IC-Mamba combines three key components to tackle these challenges:&lt;/p>
+&lt;h4 id="1-timeaware-positional-embeddings">1. Time-Aware Positional Embeddings&lt;/h4>
+&lt;p>We developed a dual encoding strategy that captures both relative and absolute temporal relationships:&lt;/p>
+&lt;p>&lt;strong>Relative Temporal Encoding (RTE)&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>RTE(t, t_ref) = sin((t - t_ref) / σ)&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Absolute Temporal Encoding (ATE)&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>ATE(t) = [sin(t/10000^(2i/d)), cos(t/10000^(2i/d))]&lt;/code>&lt;/p>
+&lt;p>These embeddings are then modulated by observed engagement levels, allowing the model to learn characteristic temporal patterns associated with different levels of social impact.&lt;/p>
+&lt;h4 id="2-intervalcensored-state-space-modeling">2. Interval-Censored State Space Modeling&lt;/h4>
+&lt;p>We extend the Mamba architecture to handle varying-length censored intervals through:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Interval-aware vectors&lt;/strong> that encode time gaps and engagement counts&lt;/li>
+&lt;li>&lt;strong>Time-dependent state transitions&lt;/strong> using matrix exponentials&lt;/li>
+&lt;li>&lt;strong>Selective state processing&lt;/strong> through parallel pathways&lt;/li>
+&lt;/ul>
+&lt;img src="./architecture.png" width="100%">
+&lt;p style="text-align: center;">&lt;em>Figure 2. Overview of the IC-Mamba Architecture. &lt;/em>&lt;/p>
+&lt;h4 id="3-twotier-architecture">3. Two-Tier Architecture&lt;/h4>
+&lt;p>As shown in Figure 3, IC-Mamba uses a hierarchical approach:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Tier 1&lt;/strong>: Models individual post engagement dynamics&lt;/li>
+&lt;li>&lt;strong>Tier 2&lt;/strong>: Captures temporal interactions between posts sharing the same opinion&lt;/li>
+&lt;/ul>
+&lt;img src="./2-tier.png" width="80%">
+&lt;p style="text-align: center;">&lt;em>Figure 3. Overview of the Two-Tier IC-Mamba Architecture. &lt;/em>&lt;/p>
+&lt;h2 id="how-icmamba-works">How IC-Mamba Works&lt;/h2>
+&lt;h4 id="postlevel-engagement-prediction">Post-Level Engagement Prediction&lt;/h4>
+&lt;p>IC-Mamba's post-level prediction capabilities stem from its sophisticated handling of temporal dynamics and multi-modal information integration:&lt;/p>
+&lt;p>&lt;strong>1. Unified Sequence Representation&lt;/strong>&lt;br>
+The model creates a comprehensive embedding for each post by combining:&lt;/p>
+&lt;p>&lt;code>SE(p) = Encoder([CLS] ⊕ [text] ⊕ [SEP] ⊕ [user] ⊕ [SEP] ⊕ [timeline] ⊕ [SEP] ⊕ [engagement])&lt;/code>&lt;/p>
+&lt;p>This allows IC-Mamba to jointly learn from textual content, user metadata, and temporal engagement patterns in a single unified framework.&lt;/p>
+&lt;p>&lt;strong>2. Interval-Aware State Processing&lt;/strong>&lt;br>
+For each observation time, the model constructs an interval-aware vector that captures:&lt;/p>
+&lt;ul>
+&lt;li>Time since last observation (Δt⁻)&lt;/li>
+&lt;li>Current engagement levels (log(1 + e))&lt;/li>
+&lt;li>Forward interval length (Δt⁺)&lt;/li>
+&lt;li>Predicted next engagement&lt;/li>
+&lt;/ul>
+&lt;p>This rich representation enables the model to understand not just what happened, but when and how quickly it occurred.&lt;/p>
+&lt;p>&lt;strong>3. Adaptive State Transitions&lt;/strong>&lt;br>
+The state space model adapts to varying observation intervals through:&lt;/p>
+&lt;p>&lt;code>A_t(Δt) = exp(Δt · Ã_t)&lt;/code>&lt;/p>
+&lt;p>This matrix exponential formulation allows smooth interpolation across irregular time gaps, maintaining temporal coherence even with sparse observations.&lt;/p>
+&lt;h4 id="opinionlevel-classification">Opinion-Level Classification&lt;/h4>
+&lt;p>IC-Mamba's exceptional performance in identifying misinformation narratives comes from its two-tier architecture and sophisticated temporal modeling:&lt;/p>
+&lt;p>&lt;strong>1. Learning Opinion Signatures&lt;/strong>&lt;br>
+The first tier (IC-Mamba₁) processes individual posts to learn characteristic engagement patterns for different opinion types. Posts expressing similar opinions often exhibit similar temporal dynamics - for instance, conspiracy theories might show rapid initial spread followed by sustained engagement from dedicated communities.&lt;/p>
+&lt;p>&lt;strong>2. Capturing Narrative Evolution&lt;/strong>&lt;br>
+The second tier (IC-Mamba₂) models how opinions spread across multiple posts:&lt;/p>
+&lt;p>&lt;code>z_o = IC-Mamba₂((h_i, δt_i))&lt;/code>&lt;/p>
+&lt;p>Where:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>h_i&lt;/code>: Hidden representations from individual posts&lt;/li>
+&lt;li>&lt;code>δt_i&lt;/code>: Time intervals between posts expressing the same opinion&lt;/li>
+&lt;/ul>
+&lt;p>This allows the model to identify coordinated campaigns where multiple accounts push similar narratives with strategic timing.&lt;/p>
+&lt;p>&lt;strong>3. Multi-Scale Temporal Features&lt;/strong>&lt;br>
+The model learns to distinguish between:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Organic discussions&lt;/strong>: Natural ebb and flow of engagement, constrained by human attention limits&lt;/li>
+&lt;li>&lt;strong>Coordinated campaigns&lt;/strong>: Artificial amplification patterns, strategic timing, and sustained engagement beyond natural thresholds&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>4. Context-Aware Classification&lt;/strong>&lt;br>
+Unlike text-only approaches (like BERT), IC-Mamba incorporates:&lt;/p>
+&lt;ul>
+&lt;li>Engagement velocity (how quickly reactions accumulate)&lt;/li>
+&lt;li>User network effects (who's sharing and when)&lt;/li>
+&lt;li>Temporal coordination (synchronized posting patterns)&lt;/li>
+&lt;li>Cross-platform dynamics (when available)&lt;/li>
+&lt;/ul>
+&lt;p>This multi-faceted approach explains why IC-Mamba achieves F1 scores of 0.69-0.75 on organic content and maintains 0.51 performance even on sophisticated disinformation campaigns where text-only models fail dramatically.&lt;/p>
+&lt;h2 id="understanding-engagement-patterns-misinformation-vs-disinformation">Understanding Engagement Patterns: Misinformation vs. Disinformation&lt;/h2>
+&lt;p>Figure 4 reveals differences between misinformation discussions and coordinated campaigns:&lt;/p>
+&lt;img src="./figure4.png" width="120%">
+&lt;p style="text-align: center;">&lt;em>Figure 4: Engagement distribution patterns. &lt;/em>&lt;/p>
+&lt;!-- ![Figure 4: Engagement distribution patterns](./figure4.png) -->
+&lt;p>&lt;strong>Misinformation content (Climate Change)&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Follows human-scale constraints (~150 stable connections - Dunbar's number)&lt;/li>
+&lt;li>Plateaus around 10³ engagements&lt;/li>
+&lt;li>Uniform decay across engagement types&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Coordinated campaigns (DiN)&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Transcends natural limits, reaching 10⁶ engagements&lt;/li>
+&lt;li>Marked stratification, especially in likes&lt;/li>
+&lt;li>Self-similar temporal behavior across all observation windows&lt;/li>
+&lt;/ul>
+&lt;h2 id="realworld-impact-tracking-climate-change-is-a-un-hoax">Real-World Impact: Tracking &amp;ldquo;Climate Change is a UN Hoax&amp;rdquo;&lt;/h2>
+&lt;img src="./figure6.png" width="120%">
+&lt;p style="text-align: center;">&lt;em>Figure 5: Early prediction performance on "Climate Change is a UN Hoax". &lt;/em>&lt;/p>
+&lt;!-- ![Figure 6: Early prediction performance on "Climate Change is a UN Hoax".](./figure6.png) -->
+&lt;p>Figure 5a and 5b showcase IC-Mamba's ability to forecast opinion-level engagement over 28 days:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>7-day observation window&lt;/strong>: Predictions remain accurate with wider confidence intervals&lt;/li>
+&lt;li>&lt;strong>10-day observation window&lt;/strong>: Tighter confidence bands and improved long-term accuracy&lt;/li>
+&lt;li>&lt;strong>Multi-engagement tracking&lt;/strong>: Simultaneously forecasts likes, comments, shares, and emoji reactions&lt;/li>
+&lt;/ul>
+&lt;h2 id="technical-deep-dive-the-mathematics-behind-icmamba">Technical Deep Dive: The Mathematics Behind IC-Mamba&lt;/h2>
+&lt;h4 id="state-space-formulation">State Space Formulation&lt;/h4>
+&lt;p>The model uses time-dependent state transitions:&lt;/p>
+&lt;p>A_t(Δt) = exp(Δt · Ã_t) ∈ ℝ^(D_h × D_h)
+h_t = A_t(Δt)h_{t-1} + B_t x_t
+y_t = C_t^T h_t&lt;/p>
+&lt;p>Where:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>h_t&lt;/code>: Hidden state at time t&lt;/li>
+&lt;li>&lt;code>Δt&lt;/code>: Interval between observations&lt;/li>
+&lt;li>&lt;code>exp(Δt · Ã_t)&lt;/code>: Matrix exponential for smooth interpolation&lt;/li>
+&lt;/ul>
+&lt;h4 id="loss-functions">Loss Functions&lt;/h4>
+&lt;p>We combine two objectives for robust training:&lt;/p>
+&lt;p>&lt;strong>Engagement Prediction Loss&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>L_pred = (1/|P|) Σ_p Σ_j ||ê_{j+1} - e_{j+1}||²&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Temporal Coherence Loss&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>L_temp = (1/|P|) Σ_p Σ_j ||h_{j+1} - exp(Δt_j^+ · Ã_t)h_j||²&lt;/code>&lt;/p>
+&lt;h2 id="conclusion-a-tool-for-digital-defense">Conclusion: A Tool for Digital Defense&lt;/h2>
+&lt;p>IC-Mamba shows our ability to detect and predict the spread of misinformation and disinformation online. By providing early warnings &amp;ndash; often within 15-30 minutes of posting &amp;ndash; it offers platforms and researchers crucial time to:&lt;/p>
+&lt;ul>
+&lt;li>Identify potentially harmful content before mass exposure&lt;/li>
+&lt;li>Track coordinated information operations in real-time&lt;/li>
+&lt;li>Design and implement targeted countermeasures&lt;/li>
+&lt;li>Protect democratic discourse from manipulation&lt;/li>
+&lt;/ul>
+&lt;p>As misinformation continues to threaten social cohesion and democratic institutions, tools like IC-Mamba become essential components of our digital defense infrastructure. The model's ability to distinguish between organic discussions and coordinated campaigns, combined with its early detection capabilities, makes it a powerful ally in the fight against online manipulation.&lt;/p>
+&lt;p>The code is publicly available at &lt;a href="https://github.com/ltian678/ic-mamba">&lt;a href="https://github.com/ltian678/ic-mamba">https://github.com/ltian678/ic-mamba&lt;/a>&lt;/a>, and an interactive dashboard demonstrating the results can be accessed at &lt;a href="https://ic-mamba.behavioral-ds.science/">https://ic-mamba.behavioral-ds.science/&lt;/a>.&lt;/p>
+&lt;hr></description></item></channel></rss>

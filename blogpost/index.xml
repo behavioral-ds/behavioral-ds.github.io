@@ -1,4 +1,154 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Testing | Behavioral Data Science</title><link>https://www.behavioral-ds.science/blogpost/</link><atom:link href="https://www.behavioral-ds.science/blogpost/index.xml" rel="self" type="application/rss+xml"/><description>Testing</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2025</copyright><lastBuildDate>Fri, 09 May 2025 00:00:00 +0000</lastBuildDate><image><url>https://www.behavioral-ds.science/img/logo.png</url><title>Testing</title><link>https://www.behavioral-ds.science/blogpost/</link></image><item><title>Some Reddit users just love to disagree, new AI-powered troll-spotting algorithm finds</title><link>https://www.behavioral-ds.science/blogpost/irl_homophily/</link><pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate><guid>https://www.behavioral-ds.science/blogpost/irl_homophily/</guid><description>&lt;p>This is a repost of our article from &lt;a href="https://theconversation.com/some-reddit-users-just-love-to-disagree-new-ai-powered-troll-spotting-algorithm-finds-255879">The Conversation&lt;/a>.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Research blogs from the Behavioral Data Science lab | Behavioral Data Science</title><link>https://www.behavioral-ds.science/blogpost/</link><atom:link href="https://www.behavioral-ds.science/blogpost/index.xml" rel="self" type="application/rss+xml"/><description>Research blogs from the Behavioral Data Science lab</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2025</copyright><lastBuildDate>Fri, 20 Jun 2025 00:00:00 +0000</lastBuildDate><image><url>https://www.behavioral-ds.science/img/logo.png</url><title>Research blogs from the Behavioral Data Science lab</title><link>https://www.behavioral-ds.science/blogpost/</link></image><item><title>Before It's Too Late: A State Space Model for the Early Prediction of Misinformation and Disinformation Engagement</title><link>https://www.behavioral-ds.science/blogpost/ic-mamba/</link><pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate><guid>https://www.behavioral-ds.science/blogpost/ic-mamba/</guid><description>&lt;h2 id="introduction-from-4chan-to-capitol--when-online-conspiracies-turn-deadly">Introduction: From 4chan to Capitol - When Online Conspiracies Turn Deadly&lt;/h2>
+&lt;p>On October 28, 2017, an anonymous 4chan user made a cryptic post claiming Hillary Clinton would be arrested within days. Four years later, on January 6, 2021, devotees of the QAnon conspiracy theory - which originated from that very post - stormed the U.S. Capitol in an act that left five people dead and over 140 police officers injured.&lt;/p>
+&lt;p>This tragic event underscores a critical question:&lt;/p>
+&lt;p>&lt;strong>What if we could have seen this coming?&lt;/strong>&lt;/p>
+&lt;p>Today, we're introducing IC-Mamba, a state-of-the-art model that can forecast social media engagement patterns and detect viral misinformation before it spirals out of control. By modeling the complex temporal dynamics of how content spreads online, IC-Mamba achieves unprecedented accuracy in predicting which posts will go viral - often within just 15-30 minutes of publication.&lt;/p>
+&lt;p>&lt;strong>Paper citation:&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>Tian, L., Booth, E., Bailo, F., Droogan, J. and Rizoiu, M.A., 2025, April.
+Before It's Too Late: A State Space Model for the Early Prediction of Misinformation and Disinformation Engagement.
+In Proceedings of the ACM on Web Conference 2025 (pp. 5244-5254).
+&lt;/code>&lt;/pre>
+&lt;p>(&lt;em>see full paper here: &lt;a href="https://dl.acm.org/doi/abs/10.1145/3696410.3714527">&lt;a href="https://dl.acm.org/doi/abs/10.1145/3696410.3714527">https://dl.acm.org/doi/abs/10.1145/3696410.3714527&lt;/a>&lt;/a>&lt;/em>)&lt;/p>
+&lt;h2 id="the-challenge-understanding-intervalcensored-social-media-data">The Challenge: Understanding Interval-Censored Social Media Data&lt;/h2>
+&lt;p>Social media platforms don't provide continuous streams of engagement data. Instead, they offer snapshots at irregular intervals - what we call &amp;ldquo;interval-censored&amp;rdquo; data. As illustrated in Figure 1, while users interact with content continuously, platforms only report cumulative counts at discrete observation points.&lt;/p>
+&lt;img src="./featured.png" width="100%">
+&lt;p style="text-align: center;">&lt;em>Figure 1. Illustration of interval-censored social media engagement data. &lt;/em>&lt;/p>
+&lt;p>This creates unique challenges:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Irregular sampling&lt;/strong>: Observation intervals vary from minutes to hours&lt;/li>
+&lt;li>&lt;strong>Cumulative counts&lt;/strong>: We only see totals, not individual actions&lt;/li>
+&lt;li>&lt;strong>Multi-scale dynamics&lt;/strong>: Engagement patterns evolve from rapid initial spread to long-term influence&lt;/li>
+&lt;/ul>
+&lt;h2 id="icmamba-a-novel-architecture-for-early-detection">IC-Mamba: A Novel Architecture for Early Detection&lt;/h2>
+&lt;p>IC-Mamba combines three key components to tackle these challenges:&lt;/p>
+&lt;h4 id="1-timeaware-positional-embeddings">1. Time-Aware Positional Embeddings&lt;/h4>
+&lt;p>We developed a dual encoding strategy that captures both relative and absolute temporal relationships:&lt;/p>
+&lt;p>&lt;strong>Relative Temporal Encoding (RTE)&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>RTE(t, t_ref) = sin((t - t_ref) / σ)&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Absolute Temporal Encoding (ATE)&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>ATE(t) = [sin(t/10000^(2i/d)), cos(t/10000^(2i/d))]&lt;/code>&lt;/p>
+&lt;p>These embeddings are then modulated by observed engagement levels, allowing the model to learn characteristic temporal patterns associated with different levels of social impact.&lt;/p>
+&lt;h4 id="2-intervalcensored-state-space-modeling">2. Interval-Censored State Space Modeling&lt;/h4>
+&lt;p>We extend the Mamba architecture to handle varying-length censored intervals through:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Interval-aware vectors&lt;/strong> that encode time gaps and engagement counts&lt;/li>
+&lt;li>&lt;strong>Time-dependent state transitions&lt;/strong> using matrix exponentials&lt;/li>
+&lt;li>&lt;strong>Selective state processing&lt;/strong> through parallel pathways&lt;/li>
+&lt;/ul>
+&lt;img src="./architecture.png" width="100%">
+&lt;p style="text-align: center;">&lt;em>Figure 2. Overview of the IC-Mamba Architecture. &lt;/em>&lt;/p>
+&lt;h4 id="3-twotier-architecture">3. Two-Tier Architecture&lt;/h4>
+&lt;p>As shown in Figure 3, IC-Mamba uses a hierarchical approach:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Tier 1&lt;/strong>: Models individual post engagement dynamics&lt;/li>
+&lt;li>&lt;strong>Tier 2&lt;/strong>: Captures temporal interactions between posts sharing the same opinion&lt;/li>
+&lt;/ul>
+&lt;img src="./2-tier.png" width="80%">
+&lt;p style="text-align: center;">&lt;em>Figure 3. Overview of the Two-Tier IC-Mamba Architecture. &lt;/em>&lt;/p>
+&lt;h2 id="how-icmamba-works">How IC-Mamba Works&lt;/h2>
+&lt;h4 id="postlevel-engagement-prediction">Post-Level Engagement Prediction&lt;/h4>
+&lt;p>IC-Mamba's post-level prediction capabilities stem from its sophisticated handling of temporal dynamics and multi-modal information integration:&lt;/p>
+&lt;p>&lt;strong>1. Unified Sequence Representation&lt;/strong>&lt;br>
+The model creates a comprehensive embedding for each post by combining:&lt;/p>
+&lt;p>&lt;code>SE(p) = Encoder([CLS] ⊕ [text] ⊕ [SEP] ⊕ [user] ⊕ [SEP] ⊕ [timeline] ⊕ [SEP] ⊕ [engagement])&lt;/code>&lt;/p>
+&lt;p>This allows IC-Mamba to jointly learn from textual content, user metadata, and temporal engagement patterns in a single unified framework.&lt;/p>
+&lt;p>&lt;strong>2. Interval-Aware State Processing&lt;/strong>&lt;br>
+For each observation time, the model constructs an interval-aware vector that captures:&lt;/p>
+&lt;ul>
+&lt;li>Time since last observation (Δt⁻)&lt;/li>
+&lt;li>Current engagement levels (log(1 + e))&lt;/li>
+&lt;li>Forward interval length (Δt⁺)&lt;/li>
+&lt;li>Predicted next engagement&lt;/li>
+&lt;/ul>
+&lt;p>This rich representation enables the model to understand not just what happened, but when and how quickly it occurred.&lt;/p>
+&lt;p>&lt;strong>3. Adaptive State Transitions&lt;/strong>&lt;br>
+The state space model adapts to varying observation intervals through:&lt;/p>
+&lt;p>&lt;code>A_t(Δt) = exp(Δt · Ã_t)&lt;/code>&lt;/p>
+&lt;p>This matrix exponential formulation allows smooth interpolation across irregular time gaps, maintaining temporal coherence even with sparse observations.&lt;/p>
+&lt;h4 id="opinionlevel-classification">Opinion-Level Classification&lt;/h4>
+&lt;p>IC-Mamba's exceptional performance in identifying misinformation narratives comes from its two-tier architecture and sophisticated temporal modeling:&lt;/p>
+&lt;p>&lt;strong>1. Learning Opinion Signatures&lt;/strong>&lt;br>
+The first tier (IC-Mamba₁) processes individual posts to learn characteristic engagement patterns for different opinion types. Posts expressing similar opinions often exhibit similar temporal dynamics - for instance, conspiracy theories might show rapid initial spread followed by sustained engagement from dedicated communities.&lt;/p>
+&lt;p>&lt;strong>2. Capturing Narrative Evolution&lt;/strong>&lt;br>
+The second tier (IC-Mamba₂) models how opinions spread across multiple posts:&lt;/p>
+&lt;p>&lt;code>z_o = IC-Mamba₂((h_i, δt_i))&lt;/code>&lt;/p>
+&lt;p>Where:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>h_i&lt;/code>: Hidden representations from individual posts&lt;/li>
+&lt;li>&lt;code>δt_i&lt;/code>: Time intervals between posts expressing the same opinion&lt;/li>
+&lt;/ul>
+&lt;p>This allows the model to identify coordinated campaigns where multiple accounts push similar narratives with strategic timing.&lt;/p>
+&lt;p>&lt;strong>3. Multi-Scale Temporal Features&lt;/strong>&lt;br>
+The model learns to distinguish between:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Organic discussions&lt;/strong>: Natural ebb and flow of engagement, constrained by human attention limits&lt;/li>
+&lt;li>&lt;strong>Coordinated campaigns&lt;/strong>: Artificial amplification patterns, strategic timing, and sustained engagement beyond natural thresholds&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>4. Context-Aware Classification&lt;/strong>&lt;br>
+Unlike text-only approaches (like BERT), IC-Mamba incorporates:&lt;/p>
+&lt;ul>
+&lt;li>Engagement velocity (how quickly reactions accumulate)&lt;/li>
+&lt;li>User network effects (who's sharing and when)&lt;/li>
+&lt;li>Temporal coordination (synchronized posting patterns)&lt;/li>
+&lt;li>Cross-platform dynamics (when available)&lt;/li>
+&lt;/ul>
+&lt;p>This multi-faceted approach explains why IC-Mamba achieves F1 scores of 0.69-0.75 on organic content and maintains 0.51 performance even on sophisticated disinformation campaigns where text-only models fail dramatically.&lt;/p>
+&lt;h2 id="understanding-engagement-patterns-misinformation-vs-disinformation">Understanding Engagement Patterns: Misinformation vs. Disinformation&lt;/h2>
+&lt;p>Figure 4 reveals differences between misinformation discussions and coordinated campaigns:&lt;/p>
+&lt;img src="./figure4.png" width="120%">
+&lt;p style="text-align: center;">&lt;em>Figure 4: Engagement distribution patterns. &lt;/em>&lt;/p>
+&lt;!-- ![Figure 4: Engagement distribution patterns](./figure4.png) -->
+&lt;p>&lt;strong>Misinformation content (Climate Change)&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Follows human-scale constraints (~150 stable connections - Dunbar's number)&lt;/li>
+&lt;li>Plateaus around 10³ engagements&lt;/li>
+&lt;li>Uniform decay across engagement types&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Coordinated campaigns (DiN)&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Transcends natural limits, reaching 10⁶ engagements&lt;/li>
+&lt;li>Marked stratification, especially in likes&lt;/li>
+&lt;li>Self-similar temporal behavior across all observation windows&lt;/li>
+&lt;/ul>
+&lt;h2 id="realworld-impact-tracking-climate-change-is-a-un-hoax">Real-World Impact: Tracking &amp;ldquo;Climate Change is a UN Hoax&amp;rdquo;&lt;/h2>
+&lt;img src="./figure6.png" width="120%">
+&lt;p style="text-align: center;">&lt;em>Figure 5: Early prediction performance on "Climate Change is a UN Hoax". &lt;/em>&lt;/p>
+&lt;!-- ![Figure 6: Early prediction performance on "Climate Change is a UN Hoax".](./figure6.png) -->
+&lt;p>Figure 5a and 5b showcase IC-Mamba's ability to forecast opinion-level engagement over 28 days:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>7-day observation window&lt;/strong>: Predictions remain accurate with wider confidence intervals&lt;/li>
+&lt;li>&lt;strong>10-day observation window&lt;/strong>: Tighter confidence bands and improved long-term accuracy&lt;/li>
+&lt;li>&lt;strong>Multi-engagement tracking&lt;/strong>: Simultaneously forecasts likes, comments, shares, and emoji reactions&lt;/li>
+&lt;/ul>
+&lt;h2 id="technical-deep-dive-the-mathematics-behind-icmamba">Technical Deep Dive: The Mathematics Behind IC-Mamba&lt;/h2>
+&lt;h4 id="state-space-formulation">State Space Formulation&lt;/h4>
+&lt;p>The model uses time-dependent state transitions:&lt;/p>
+&lt;p>A_t(Δt) = exp(Δt · Ã_t) ∈ ℝ^(D_h × D_h)
+h_t = A_t(Δt)h_{t-1} + B_t x_t
+y_t = C_t^T h_t&lt;/p>
+&lt;p>Where:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>h_t&lt;/code>: Hidden state at time t&lt;/li>
+&lt;li>&lt;code>Δt&lt;/code>: Interval between observations&lt;/li>
+&lt;li>&lt;code>exp(Δt · Ã_t)&lt;/code>: Matrix exponential for smooth interpolation&lt;/li>
+&lt;/ul>
+&lt;h4 id="loss-functions">Loss Functions&lt;/h4>
+&lt;p>We combine two objectives for robust training:&lt;/p>
+&lt;p>&lt;strong>Engagement Prediction Loss&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>L_pred = (1/|P|) Σ_p Σ_j ||ê_{j+1} - e_{j+1}||²&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Temporal Coherence Loss&lt;/strong>:&lt;/p>
+&lt;p>&lt;code>L_temp = (1/|P|) Σ_p Σ_j ||h_{j+1} - exp(Δt_j^+ · Ã_t)h_j||²&lt;/code>&lt;/p>
+&lt;h2 id="conclusion-a-tool-for-digital-defense">Conclusion: A Tool for Digital Defense&lt;/h2>
+&lt;p>IC-Mamba shows our ability to detect and predict the spread of misinformation and disinformation online. By providing early warnings &amp;ndash; often within 15-30 minutes of posting &amp;ndash; it offers platforms and researchers crucial time to:&lt;/p>
+&lt;ul>
+&lt;li>Identify potentially harmful content before mass exposure&lt;/li>
+&lt;li>Track coordinated information operations in real-time&lt;/li>
+&lt;li>Design and implement targeted countermeasures&lt;/li>
+&lt;li>Protect democratic discourse from manipulation&lt;/li>
+&lt;/ul>
+&lt;p>As misinformation continues to threaten social cohesion and democratic institutions, tools like IC-Mamba become essential components of our digital defense infrastructure. The model's ability to distinguish between organic discussions and coordinated campaigns, combined with its early detection capabilities, makes it a powerful ally in the fight against online manipulation.&lt;/p>
+&lt;p>The code is publicly available at &lt;a href="https://github.com/ltian678/ic-mamba">&lt;a href="https://github.com/ltian678/ic-mamba">https://github.com/ltian678/ic-mamba&lt;/a>&lt;/a>, and an interactive dashboard demonstrating the results can be accessed at &lt;a href="https://ic-mamba.behavioral-ds.science/">https://ic-mamba.behavioral-ds.science/&lt;/a>.&lt;/p>
+&lt;hr></description></item><item><title>Some Reddit users just love to disagree, new AI-powered troll-spotting algorithm finds</title><link>https://www.behavioral-ds.science/blogpost/irl_homophily/</link><pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate><guid>https://www.behavioral-ds.science/blogpost/irl_homophily/</guid><description>&lt;p>This is a repost of our article from &lt;a href="https://theconversation.com/some-reddit-users-just-love-to-disagree-new-ai-powered-troll-spotting-algorithm-finds-255879">The Conversation&lt;/a>.&lt;/p>
 &lt;p>&lt;strong>Paper citation:&lt;/strong>&lt;/p>
 &lt;pre>&lt;code>Lanqin Yuan, Philipp J. Schneider, and Marian-Andrei Rizoiu. 2025. Behavioral Homophily in Social Media via Inverse Reinforcement Learning: A Reddit Case Study. In Proceedings of the ACM on Web Conference 2025 (WWW '25). Association for Computing Machinery, New York, NY, USA, 576–589. https://doi.org/10.1145/3696410.3714618
 &lt;/code>&lt;/pre>
@@ -112,255 +262,4 @@ The second tier (bottom row of Figure 1) uses a market share attraction model to
 [19] Zarezade, A.; Khodadadi, A.; Farajtabar, M.; Rabiee, H. R.; and Zha, H. 2017. Correlated cascades: Compete or cooperate. AAAI 2017, 238–244.&lt;br>
 [20] Valera, I.; and Gomez-Rodriguez, M. 2015. Modeling Adoption and Usage of Competing Products. In ICDM.&lt;br>
 [21] Cinelli, M.; De Francisci Morales, G.; Galeazzi, A.; Quattrociocchi, W.; and Starnini, M. 2021. The echo chamber effect on social media. PNAS, 118(9).&lt;br>
-[22] Peucker, M.; Fisher, T. J.; and Davey, J. 2022. Mainstream media use in far-right online ecosystems. Technical report.&lt;/p></description></item><item><title>Detecting extreme ideologies in shifting landscapes</title><link>https://www.behavioral-ds.science/blogpost/ideology_detection/</link><pubDate>Thu, 02 Feb 2023 00:00:00 +0000</pubDate><guid>https://www.behavioral-ds.science/blogpost/ideology_detection/</guid><description>
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/csWMgU7R52Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
-&lt;/iframe>
-&lt;p>Also check out &lt;a href="../authors/rohit-ram/">Rohit&lt;/a>’s and &lt;a href="../authors/ma-rizoiu/">Andrei&lt;/a>’s article that just appeared in The Conversation: &lt;a href="https://theconversation.com/can-ideology-detecting-algorithms-catch-online-extremism-before-it-takes-hold-200629">Can ideology-detecting algorithms catch online extremism before it takes hold?&lt;/a>&lt;/p>
-&lt;p>In this &lt;a href="https://arxiv.org/pdf/2208.04097.pdf">our latest working paper&lt;/a>, we propose a completely automatic end-to-end ideology detection pipeline for the detection and psychosocial profiling of left-right political ideology, as well as far-right ideological users.
-The pipeline fills a crucial gap by providing flexible methodology and tooling for understanding ideologies and building early warning systems for extreme ideology-motivated (and potentially violent) activity.&lt;/p>
-&lt;p>&lt;strong>Paper citation:&lt;/strong>&lt;/p>
-&lt;pre>&lt;code>Ram, R. and Rizoiu, M.A., 2022. You are what you browse: A robust framework for uncovering political ideology.
-arXiv preprint arXiv:2208.04097.&lt;/code>&lt;/pre>
-&lt;p>(&lt;em>see full paper here: &lt;a href="https://arxiv.org/pdf/2208.04097.pdf">https://arxiv.org/pdf/2208.04097.pdf&lt;/a>&lt;/em>)&lt;/p>
-&lt;div id="ideology-in-an-online-world" class="section level2">
-&lt;h2>Ideology in an Online World&lt;/h2>
-&lt;p>Ideology determines how we make sense of much of the world, our opinions, and our political actions.
-It is not a new concept; throughout history, it served as the context for unrest.
-However, ideological spread and radicalization have entered a new paradigm in our ever-connected world. The internet is a significant source of information and spreads opinions quickly through social platforms.
-In particular, the anonymity and lack of accountability often associated with online communication set up a supportive environment for spreading far-right ideologies and radicalizing individuals into extremist groups.
-Far-right extremism is a form of ideology that advocates for ultranationalism, racism, and opposition to immigration and multiculturalism.
-These ideologies strongly correlate with violence and terrorism and threaten individual and collective security.&lt;/p>
-&lt;p>The Australian Security Intelligence Organisation (ASIO) raised concerns about Australians being radicalized very young and the rise of extremist movements in Australia through online technologies &lt;span class="citation">(&lt;a href="#ref-asio" role="doc-biblioref">&lt;span>“Director-General’s Annual Threat Assessment”&lt;/span> 2021&lt;/a>)&lt;/span>.
-ASIO claimed that during the COVID period, 30-40% of their caseload was devoted to far-right extremism, up from 10-15% in 2016 &lt;span class="citation">(&lt;a href="#ref-guardian1" role="doc-biblioref">Karp 2020&lt;/a>)&lt;/span>.&lt;/p>
-&lt;p>Unfortunately, Ideologically Motivated Violent Extremism (IMVE) continues to be an issue in Australia.
-On December 12th, 2022, two Queensland police officers were killed while performing routine duties &lt;span class="citation">(&lt;a href="#ref-guardian2" role="doc-biblioref">Gillespie and McGowan 2022&lt;/a>)&lt;/span>.
-Later investigations would uncover that the three people, who killed the officers, were active online in producing deep-state and religious conspiratorial content.
-Their content has since been removed from mainstream social platforms but continues to be shared on conspiratorial websites.
-Such extreme-leaning content often serves as a lead indicator of violent extremism (as was the case in this incident and the Christchurch Mosque Shootings three years prior). However, the tools to identify and understand the psychosocial characteristics of these extreme individuals and communities are lacking.&lt;/p>
-&lt;p>In this work, we build an end-to-end ideology detection pipeline and psychosocial profiles of ideological groups.
-We find that right-leaning individuals tend to use moral-vice language more than left-leaning and that far-right individuals’ grievance language (violence, hate, paranoia, etc.) significantly differs from the moderates.&lt;/p>
-&lt;/div>
-&lt;div id="signals-of-ideology" class="section level2">
-&lt;h2>Signals of Ideology&lt;/h2>
-&lt;p>In online social settings, researchers face numerous barriers that prevent using traditional methods.
-Directly asking users for their ideologies has dubious success, infringes on platform T&amp;amp;Cs, and does not scale to online populations.
-Inferring users’ ideologies from their activity also does not scale as the data requires is prohibitively expensive and tedious to compile.&lt;/p>
-&lt;p>Instead, to reduce expert labor to feasible levels, researchers infer ideologies from signals in user behavior – such as whether they use political hashtags, retweet politicians, or follow political parties.
-We dub these signals &lt;em>ideological proxies&lt;/em>.&lt;/p>
-&lt;p>Importantly, these &lt;em>ideological proxies&lt;/em> for online users can still require laborious labeling by context-specific experts.
-For example, the hashtag &lt;em>#ScottyFromMarketing&lt;/em> requires an up-to-date expert in Australian politics to uncover that it expresses an anti-right-wing ideology.
-For many researchers:
-- access to contextual experts is difficult,
-- labeling of signals is still laborious and expensive,
-- and context switches require relabelling (exasperating the above problems).&lt;/p>
-&lt;p>Unfortunately, such context switches are commonplace, as the context changes with time, country, or social platform.
-Figure &lt;a href="#fig:teaser">1&lt;/a> showcases the problem: most commonly used &lt;em>ideological proxies&lt;/em> can only be transferred in narrow circumstances (represented by the green dotted regions).
-For example, following political parties is country-dependent, politicians come and go with time, and hashtags are platform-dependent.
-As such, we desire an &lt;em>ideological proxy&lt;/em> that is robust to changes in context, requires no expert labeling and is true to the gold standard.&lt;/p>
-&lt;div class="figure">&lt;span style="display:block;" id="fig:teaser">&lt;/span>
-&lt;img src="teaser_v2.svg" alt="Schema showing that not all ideological proxies can context-switch." width="700px" />
-&lt;p class="caption">
-Figure 1: Schema showing that not all ideological proxies can context-switch.
-&lt;/p>
-&lt;/div>
-&lt;!-- ![Not all ideological proxies can context-switch](teaser.png) -->
-&lt;p>Furthermore, the &lt;em>ideological proxies&lt;/em> are often sparse among users; however, we would ideally like to detect influence amongst the entire population of users (as taking only active users could bias our inferences).
-We further desire a method for inferring the ideology of (potentially inactive) users without direct &lt;em>ideological proxy&lt;/em> information.&lt;/p>
-&lt;/div>
-&lt;div id="our-solution-you-are-what-you-browse" class="section level2">
-&lt;h2>Our Solution: You are what you browse&lt;/h2>
-&lt;p>Our solution is a large-scale end-to-end ideology detection pipeline that can be used to profile entire populations of users.
-The solution has two main components; the media proxy and the inference architecture.
-The media proxy allows for labeling a subset of users, and the inference architecture allows for propagating these labels to the remaining users via socially-informed homophilic lenses.&lt;/p>
-&lt;div id="the-media-proxy" class="section level3">
-&lt;h3>The Media Proxy&lt;/h3>
-&lt;p>For the first part of our work, we generate a proxy based on media-sharing behavior, which satisfies the desiderata.&lt;/p>
-&lt;p>We generate the media proxy via two media slant datasets (although many are widely available).
-The first is an extensive survey of media consumption behaviors conducted by Reuters &lt;span class="citation">(&lt;a href="#ref-newman2019reuters" role="doc-biblioref">Newman et al. 2019&lt;/a>)&lt;/span> in several countries in 2020 and 2021.
-Participants reported the media publications they consume and their own political ideology.
-We estimate the slant of a media source for each country and year as the average ideology of the participants who consume it.
-The second dataset is the Allsides Media Bias Dataset &lt;span class="citation">(&lt;a href="#ref-sides2018media" role="doc-biblioref">Sides 2018&lt;/a>)&lt;/span>, which contains an expert-curated set of media publications.
-The Allsides dataset contains mostly American-based media; conversely, Reuters covers the major media outlets in each country.
-Given that each country and period will have a different conception of ideologies, we calibrate Reuter’s media slants to approximate the Allsides (minimizing the mean-squared error). Figure &lt;a href="#fig:slants">2&lt;/a> shows the slants for each media website within the Reuters dataset.&lt;/p>
-&lt;div class="figure">&lt;span style="display:block;" id="fig:slants">&lt;/span>
-&lt;img src="url_slants.svg" alt="Plot showing the slants for various media websites." width="700px" />
-&lt;p class="caption">
-Figure 2: Plot showing the slants for various media websites.
-&lt;/p>
-&lt;/div>
-&lt;!-- ![The slants for various media websites](./url_slants.png) -->
-&lt;!-- We finally define the media slant of a media website, as its average over the country, year, and sources, and -->
-&lt;p>Finally, we quantify a user’s ideology as the average ideology of their shared media.&lt;/p>
-&lt;p>The media proxy resolves the issue of context switching; since it is applicable across many contexts and can be used widely in a fully automated fashion.
-This allows us to create an end-to-end ideology detection pipeline.&lt;/p>
-&lt;p>We further define methods to classify far-right users from their media-sharing behaviors, which we fully describe in the paper.&lt;/p>
-&lt;/div>
-&lt;div id="the-inference-architecture" class="section level3">
-&lt;h3>The Inference Architecture&lt;/h3>
-&lt;p>In the second part of our work, we define an inference architecture that allows inferring the ideological labels of the remaining users – e.g., users who do not share any URLs.
-Our inference architecture relies on the sociological principle of homophily, where we hypothesize that similar users will share a similar ideology.
-We measure homophily through three distinct lenses;&lt;/p>
-&lt;ol style="list-style-type: decimal">
-&lt;li>&lt;em>Lexical&lt;/em>: Users with similar language will have similar ideology&lt;/li>
-&lt;li>&lt;em>Hashtag&lt;/em>: Users who participate in similar topics of discussion share a similar ideology&lt;/li>
-&lt;li>&lt;em>Resharing&lt;/em>: Users who consume similar content (signaled via resharing of other users) will share a similar ideology&lt;/li>
-&lt;/ol>
-&lt;p>Through these lenses, we utilize an AutoML model, FLAML &lt;span class="citation">(&lt;a href="#ref-wang2021flaml" role="doc-biblioref">Wang et al. 2021&lt;/a>)&lt;/span> (with the LightGBM architecture), trained on users identified via an ideological proxy to propagate the labels to the remaining users and generate a complete ideological profile for a dataset.&lt;/p>
-&lt;/div>
-&lt;/div>
-&lt;div id="the-data" class="section level2">
-&lt;h2>The Data&lt;/h2>
-&lt;p>We utilize several large-scale datasets from various platforms to showcase the relative ease of applying our end-to-end pipeline.
-The datasets’ characteristics are described in Table &lt;a href="#tab:datasets">1&lt;/a>.
-&lt;!-- For evaluation purposes, we use \#QandA based on the popular ABC panel show. -->&lt;/p>
-&lt;table>
-&lt;caption>&lt;span id="tab:datasets">Table 1: &lt;/span>The datasets used through-out the analysis, with the number of users, posts, and affliated country.&lt;/caption>
-&lt;thead>
-&lt;tr class="header">
-&lt;th align="left">Dataset&lt;/th>
-&lt;th align="left">Users&lt;/th>
-&lt;th align="left">Posts&lt;/th>
-&lt;th align="left">Country&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr class="odd">
-&lt;td align="left">#Qanda&lt;/td>
-&lt;td align="left">103,074&lt;/td>
-&lt;td align="left">768,808&lt;/td>
-&lt;td align="left">AUS&lt;/td>
-&lt;/tr>
-&lt;tr class="even">
-&lt;td align="left">#Ausvotes&lt;/td>
-&lt;td align="left">273,874&lt;/td>
-&lt;td align="left">5,033,982&lt;/td>
-&lt;td align="left">AUS&lt;/td>
-&lt;/tr>
-&lt;tr class="odd">
-&lt;td align="left">#SocialSense&lt;/td>
-&lt;td align="left">49,442&lt;/td>
-&lt;td align="left">358,292&lt;/td>
-&lt;td align="left">AUS&lt;/td>
-&lt;/tr>
-&lt;tr class="even">
-&lt;td align="left">Riot&lt;/td>
-&lt;td align="left">574,281&lt;/td>
-&lt;td align="left">1,067,794&lt;/td>
-&lt;td align="left">US&lt;/td>
-&lt;/tr>
-&lt;tr class="odd">
-&lt;td align="left">Parler&lt;/td>
-&lt;td align="left">120,048&lt;/td>
-&lt;td align="left">603,820&lt;/td>
-&lt;td align="left">US&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;!-- ![The datasets we apply our pipeline on](datasets.png) -->
-&lt;div id="psychosocial-profiles-of-the-ideological-groups" class="section level3">
-&lt;h3>Psychosocial profiles of the Ideological Groups&lt;/h3>
-&lt;p>Large-scale profiling of entire online populations gives us significant insights into the characteristics of online populations.
-We apply our inferred ideological labels of online users in two critical ways:&lt;/p>
-&lt;ol style="list-style-type: decimal">
-&lt;li>We derive a method for distinguishing the left and the right in terms of their moral language.&lt;/li>
-&lt;li>We derive a method for distinguishing moderate and extreme ideologies in terms of their grievance language.&lt;/li>
-&lt;/ol>
-&lt;p>&lt;strong>Distinguishing Left and Right&lt;/strong>:
-We utilize the FrameAxis &lt;span class="citation">(&lt;a href="#ref-mokhberian2020moral" role="doc-biblioref">Mokhberian et al. 2020&lt;/a>)&lt;/span> methodology to metricize each user’s association with each of the five Moral Foundations &lt;span class="citation">(&lt;a href="#ref-graham2013moral" role="doc-biblioref">Graham et al. 2013&lt;/a>)&lt;/span> in terms of their vice and virtue axes.
-Given the measures of the Moral Foundations in the user language, we can start to detect in what way the left and the right differ.
-To do this, we find each ideological group’s mean vice and virtue scores and compare these to the neutral group.
-Figure &lt;a href="#fig:mft">3&lt;/a> shows the outcome of this analysis on the SocialSense dataset.&lt;/p>
-&lt;div class="figure">&lt;span style="display:block;" id="fig:mft">&lt;/span>
-&lt;img src="mft_diff_plot.svg" alt="Plot of the moral foundations of ideological groups in the SocialSense dataset, showing that the left prefer virtue and the right prefer vice language." width="700px" />
-&lt;p class="caption">
-Figure 3: Plot of the moral foundations of ideological groups in the SocialSense dataset, showing that the left prefer virtue and the right prefer vice language.
-&lt;/p>
-&lt;/div>
-&lt;!-- ![Plot showing that the left prefer virtue and the right prefer vice language](mft_diff_plot.png) -->
-&lt;p>We see that the left prefers the language of virtue, while the right prefers the language of vice.
-This trend is largely consistent across all datasets.&lt;/p>
-&lt;p>&lt;strong>Distinguishing Moderates and Extremes&lt;/strong>: We similarly generate measures via the Grievance Dictionary &lt;span class="citation">(&lt;a href="#ref-van2021grievance" role="doc-biblioref">Van der Vegt et al. 2021&lt;/a>)&lt;/span>, a threat assessment tool designed to highlight potential threats through their language.
-Similar to the previous plot, we investigate the distribution of grievance scores for the ideological groups.
-However, here we measure the difference between distributions with the Signed KL-divergence (a measure of the difference in the location and shape of distributions).
-Figure &lt;a href="#fig:grievance">4&lt;/a> shows the results for the Ausvotes dataset.&lt;/p>
-&lt;div class="figure">&lt;span style="display:block;" id="fig:grievance">&lt;/span>
-&lt;img src="grievance_diff_plot.svg" alt="Plot of the grievance categories of ideological groups in the #Ausvotes dataset, showing that the far-right is significantly different." width="700px" />
-&lt;p class="caption">
-Figure 4: Plot of the grievance categories of ideological groups in the #Ausvotes dataset, showing that the far-right is significantly different.
-&lt;/p>
-&lt;/div>
-&lt;!-- ![Plot showing that the far-right use grievance language](grievance_diff_plot.png) -->
-&lt;p>We observe that the far-right’s usage of grievance language is significantly different from the moderate ideological groups.
-This adds evidence to the growing concern that members of the far-right may vent their frustration and participate in violent behavior.&lt;/p>
-&lt;/div>
-&lt;/div>
-&lt;div id="conclusion" class="section level2">
-&lt;h2>Conclusion&lt;/h2>
-&lt;p>In this work, we build a fully automatic end-to-end ideology detection pipeline for left-right and far-right detection.
-Importantly, with the pipeline, we can show the differences between the left and right, and moderates and extremes in terms of psychosocial language, across a range of diverse datasets.&lt;/p>
-&lt;div id="references" class="section level3 unnumbered">
-&lt;h3>References&lt;/h3>
-&lt;div id="refs" class="references csl-bib-body hanging-indent">
-&lt;div id="ref-asio" class="csl-entry">
-&lt;span>“Director-General’s Annual Threat Assessment.”&lt;/span> 2021. &lt;em>ASIO&lt;/em>. &lt;a href="https://www.asio.gov.au/resources/speeches-and-statements/director-generals-annual-threat-assessment-2021">https://www.asio.gov.au/resources/speeches-and-statements/director-generals-annual-threat-assessment-2021&lt;/a>.
-&lt;/div>
-&lt;div id="ref-guardian2" class="csl-entry">
-Gillespie, Eden, and Michael McGowan. 2022. &lt;span>“Queensland Shooting: Gareth and Stacey Train Published YouTube Video After Killing Police Officers.”&lt;/span> &lt;a href="https://www.theguardian.com/australia-news/2022/dec/16/queensland-shooting-gareth-and-stacey-train-youtube-video-published-after-killing-police" class="uri">https://www.theguardian.com/australia-news/2022/dec/16/queensland-shooting-gareth-and-stacey-train-youtube-video-published-after-killing-police&lt;/a>; The Guardian.
-&lt;/div>
-&lt;div id="ref-graham2013moral" class="csl-entry">
-Graham, Jesse, Jonathan Haidt, Sena Koleva, Matt Motyl, Ravi Iyer, Sean P Wojcik, and Peter H Ditto. 2013. &lt;span>“Moral Foundations Theory: The Pragmatic Validity of Moral Pluralism.”&lt;/span> In &lt;em>Advances in Experimental Social Psychology&lt;/em>, 47:55–130. Elsevier.
-&lt;/div>
-&lt;div id="ref-guardian1" class="csl-entry">
-Karp, Paul. 2020. &lt;span>“Asio Reveals up to 40% of Its Counter-Terrorism Cases Involve Far-Right Violent Extremism.”&lt;/span> &lt;a href="https://www.theguardian.com/australia-news/2020/sep/22/asio-reveals-up-to-40-of-its-counter-terrorism-cases-involve-far-right-violent-extremism" class="uri">https://www.theguardian.com/australia-news/2020/sep/22/asio-reveals-up-to-40-of-its-counter-terrorism-cases-involve-far-right-violent-extremism&lt;/a>; The Guardian.
-&lt;/div>
-&lt;div id="ref-mokhberian2020moral" class="csl-entry">
-Mokhberian, Negar, Andrés Abeliuk, Patrick Cummings, and Kristina Lerman. 2020. &lt;span>“Moral Framing and Ideological Bias of News.”&lt;/span> In &lt;em>International Conference on Social Informatics&lt;/em>, 206–19. Springer.
-&lt;/div>
-&lt;div id="ref-newman2019reuters" class="csl-entry">
-Newman, Nic, Richard Fletcher, Antonis Kalogeropoulos, DAL Levy, and Rasmus Kleis Nielsen. 2019. &lt;span>“Reuters Institute Digital News Report 2018. Reuters Institute for the Study of Journalism.”&lt;/span> Oxford.
-&lt;/div>
-&lt;div id="ref-sides2018media" class="csl-entry">
-Sides, All. 2018. &lt;span>“Media Bias Ratings.”&lt;/span> &lt;em>Allsides. Com&lt;/em>. &lt;a href="https://www.allsides.com/media-bias/ratings">https://www.allsides.com/media-bias/ratings&lt;/a>.
-&lt;/div>
-&lt;div id="ref-van2021grievance" class="csl-entry">
-Van der Vegt, Isabelle, Maximilian Mozes, Bennett Kleinberg, and Paul Gill. 2021. &lt;span>“The Grievance Dictionary: Understanding Threatening Language Use.”&lt;/span> &lt;em>Behavior Research Methods&lt;/em> 53 (5): 2105–19.
-&lt;/div>
-&lt;div id="ref-wang2021flaml" class="csl-entry">
-Wang, Chi, Qingyun Wu, Markus Weimer, and Erkang Zhu. 2021. &lt;span>“FLAML: A Fast and Lightweight Automl Library.”&lt;/span> &lt;em>Proceedings of Machine Learning and Systems&lt;/em> 3: 434–47.
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div></description></item><item><title>Acquaintances beat close friends for job connections, huge LinkedIn study shows</title><link>https://www.behavioral-ds.science/blogpost/linkedin_experiment/</link><pubDate>Mon, 19 Sep 2022 00:00:00 +0000</pubDate><guid>https://www.behavioral-ds.science/blogpost/linkedin_experiment/</guid><description>&lt;h2 id="radio-adelaide-breakfast-interview">Radio Adelaide Breakfast interview:&lt;/h2>
-&lt;p>&lt;audio
-controls
-src="RadioAdelaideBreakfast.mp3">
-Your browser does not support the
-&lt;code>audio&lt;/code> element.
-&lt;/audio>&lt;/p>
-&lt;p>Say you are looking for a new job. You head to LinkedIn to spruce up your profile and look around your social network.&lt;/p>
-&lt;p>But who should you reach out to for an introduction to a potential new employer? A &lt;a href="https://www.science.org/doi/10.1126/science.abl4476">new study&lt;/a> of more than 20 million people, published in Science, shows that your close friends (on LinkedIn) are not your best bet: instead you should look to acquaintances you don't know well enough to share a personal connection with.&lt;/p>
-&lt;h2 id="the-strength-of-weak-ties">The strength of weak ties&lt;/h2>
-&lt;p>In 1973, the American sociologist &lt;a href="https://sociology.stanford.edu/people/mark-granovetter">Mark Granovetter&lt;/a> coined the phrase &amp;ldquo;&lt;a href="https://doi.org/10.1086%2F225469">the strength of weak ties&lt;/a>&amp;rdquo; in the context of social networks. He argued that the stronger the ties between two individuals, the more their friendship networks will overlap.&lt;/p>
-&lt;p>Simply put, you are most likely to know all the friends of a close friend, but few of the friends of an acquaintance.&lt;/p>
-&lt;p>So if you are searching for a job, you probably already know everything your immediate neighbourhood has to offer. Intuitively, it is the weak ties – your acquaintances – that offer the most opportunities for new discoveries.&lt;/p>
-&lt;h2 id="weak-ties-and-jobs">Weak ties and jobs&lt;/h2>
-&lt;p>Granovetter's theory feels right, but is it? A team of researchers from LinkedIn, Harvard Business School, Stanford and MIT set out to gather some empirical evidence on how weak ties affect job mobility.&lt;/p>
-&lt;p>Their research piggy-backed on the efforts of engineers at LinkedIn to test and improve the platform's &amp;ldquo;People You May Know&amp;rdquo; recommendation algorithm. LinkedIn regularly updates this algorithm, which recommends new people to add to your network.&lt;/p>
-&lt;p>One of these updates tested the effects of encouraging the formation of strong ties (recommending adding your close friends) versus weak ties (recommending acquaintances and friends of friends). The researchers then followed the users that participated in this &amp;ldquo;A/B testing&amp;rdquo; to see if the difference impacted their employment outcomes.&lt;/p>
-&lt;p>More than 20 million LinkedIn users worldwide were randomly assigned to well-defined treatment groups. Users in each group were shown slightly different new contact recommendations, which led users in some groups to form more strong ties and users in other groups to form more weak ties.&lt;/p>
-&lt;p>Next, the team measured how many jobs users in each group applied for, and how many &amp;ldquo;job transmissions&amp;rdquo; occurred. Job transmissions are of particular interest, as they are defined as getting a job in the same company as the new contact. A job transmission suggests the new contact helped land the job.&lt;/p>
-&lt;h2 id="moderately-weak-ties-are-best">Moderately weak ties are best&lt;/h2>
-&lt;p>The study uses causal analysis to go beyond simple correlations and connect link formation with employment. There are three important findings.&lt;/p>
-&lt;p>First, the recommender engine significantly shapes link formation. Users who were recommended more weak links formed significantly more weak links, and users who were recommended more strong links formed more strong links.&lt;/p>
-&lt;p>Second, the experiment provides causal evidence that moderately weak ties are more than twice as effective as strong ties in helping a job-seeker join a new employer. What's a &amp;ldquo;moderately&amp;rdquo; weak tie? The study found job transmission is most likely from acquaintances with whom you share about 10 mutual friends and rarely interact.&lt;/p>
-&lt;p>Third, the strength of weak ties varied by industry. Whereas weak ties increased job mobility in more digital industries, strong ties increased job mobility in less digital industries.&lt;/p>
-&lt;h2 id="better-recommendations">Better recommendations&lt;/h2>
-&lt;p>This LinkedIn study is first to causally prove Granovetter's theory in the employment market. The causal analysis is key here, as large-scale studies of correlations between strength of ties and job transmission have shown strong ties are more beneficial, in what was considered until now a paradox.&lt;/p>
-&lt;p>This study resolves the paradox and again proves the limitations of correlation studies, which do a poor job at disentangling confounding factors and sometimes lead to the wrong conclusions.&lt;/p>
-&lt;p>From a practical point of view, the study outlines the best parameters for suggesting new links. It revealed that the connections most helpful in landing a job are your acquaintances, people you meet in professional settings, or friends of friends, rather than your closest friends – people with whom you share about 10 mutual contacts and with whom one is less likely to interact regularly.&lt;/p>
-&lt;p>These can be translated into algorithmic recommendations, which can make the recommendation engines of professional networks such as LinkedIn even more proficient at helping job-seekers land jobs.&lt;/p>
-&lt;h2 id="the-power-of-black-boxes">The power of black boxes&lt;/h2>
-&lt;p>The public is often wary when large social media companies perform experiments on their users (see &lt;a href="https://www.bbc.com/news/technology-28051930">Facebook's infamous emotion experiment of 2014&lt;/a>).&lt;/p>
-&lt;p>So, could LinkedIn's experiment have harmed its users? In theory, the users in the &amp;ldquo;strong link&amp;rdquo; treatment group might have missed the weak links that could have brought their next job.&lt;/p>
-&lt;p>However, all groups had some degree of job mobility – some just a bit more than others. Moreover, since the researchers were observing an engineering experiment, the study itself seems to raise few ethical concerns.&lt;/p>
-&lt;p>Nonetheless, it is a reminder to ask how much our most intimate professional decisions – such as selecting a new career or workplace – are determined by black-box artificial intelligence algorithms whose workings we cannot see.&lt;/p></description></item></channel></rss>
+[22] Peucker, M.; Fisher, T. J.; and Davey, J. 2022. Mainstream media use in far-right online ecosystems. Technical report.&lt;/p></description></item></channel></rss>
