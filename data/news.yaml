@@ -141,6 +141,8 @@ pathway to indoctrination and opportunities for intervention](https://journals.s
     description: "[Andrew Savchenko](../authors/andrew-savchenko/) started his Masters by research with [Andrei](../authors/ma-rizoiu/) and [Emily](../authors/emily-booth/) as supervisors. Welcome, Andrew!"
   - date: '2025-07-31'
     description: " :trophy: [Andrei](../authors/ma-rizoiu/) is a finalist for the [2025 Australian Museum Eureka Prizes](https://australian.museum/get-involved/eureka-prizes/2025-eureka-prizes-finalists/) in the Department of Defence category for Outstanding Science in Safeguarding Australia! This recognition celebrates his innovative work on ethical AI systems that detect misinformation while protecting democratic values."
+  - date: '2025-08-05'
+    description: " :page_facing_up: The paper [X-Troll: eXplainable Detection of State-Sponsored Information Operations Agents](https://arxiv.org/abs/placeholder) by [Lin](../authors/lin-tian/), [Andrei](../authors/ma-rizoiu/) and collaborators from RMIT and DSTG was accepted for publication at [CIKM'25](https://cikm2025.org/)! X-Troll integrates adapter-based models with expert linguistic knowledge to detect state-sponsored information operations agents, while providing human-readable explanations of the used manipulation strategies. Enjoy Seoul, Korea, Lin!"
 
 
 
