@@ -6,17 +6,20 @@ import holidays
 # its slightly hacky but it works -_('_')_-
 
 # in order of roster
-names = [
+names = ["[Lin Tian](../authors/lin-tian/)",
+         "[Emily Booth](../authors/emily-booth/)",
          "[Jooyoung Lee](../authors/jooyoung-lee/)",
+         "[Huixiang Fu](../authors/huixiang-fu)",
+         "[Marian-Andrei Rizoiu](../authors/ma-rizoiu/)", 
+         "[Andrew Savchenko]()",
+         "[Kevin]()",
          "[Elaine Gong](../authors/xian-gong/)",
          "[Frankie Yuan](../authors/lanqin-yuan/)",
-         "[Lin Tian](../authors/lin-tian/)",
-         "[Marian-Andrei Rizoiu](../authors/ma-rizoiu/)",
-         #"[Pio Calderon](../authors/pio-calderon/)",
+                 #"[Pio Calderon](../authors/pio-calderon/)",
          ]
 
 # start date
-date_object = date(2025, 1, 22)
+date_object = date(2025, 9, 1)
 date_object += timedelta(days=3-date_object.isoweekday())
 slots = []
 holiday_dates = set()
@@ -27,7 +30,7 @@ while date_object.year == 2025:
     if date_object in holidays.AU(subdiv="NSW"):
         holiday_dates.add(date_object)
 	
-    date_object += timedelta(days=14)
+    date_object += timedelta(days=7)
 
 print(holiday_dates)
 
