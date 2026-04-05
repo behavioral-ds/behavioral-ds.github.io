@@ -21,7 +21,7 @@ organizations:
 bio: |
   I am a Postdoctoral Research Associate in Behavioral Data Science lab, DSI Team at University of Technology Sydney (UTS) and working with Marian-Andrei Rizoiu on developing machine learning solutions to counter disinformation campaigns and adversarial narratives online.
   
-  Previously, I submitted my Ph.D. thesis at the School of Computer Science and Engineering, University of New South Wales (UNSW), Sydney, where I specialised in cybersecurity and applied machine learning, focusing on detecting social media manipulations. My research covers areas such as false information detection, social bot identification, and malicious campaign analysis. My work has been published in leading peer-reviewed journals (such as OSNEM) and presented at top-tier conferences including WWW, AsiaCCS, and LCN.
+  Previously, I completed my Ph.D. at the School of Computer Science and Engineering, University of New South Wales (UNSW), Sydney, where I specialised in cybersecurity and applied machine learning, focusing on detecting social media manipulations. My research covers areas such as false information detection, social bot identification, and malicious campaign analysis. My work has been published in leading peer-reviewed journals (such as OSNEM'25) and presented at top-tier conferences including NDSS'25, WWW'25, AsiaCCS'24, and LCN'23.
 
   Outside of research, I am always happy to chat about research—or soccer—over coffee.
 
