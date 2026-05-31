@@ -8,6 +8,7 @@ authors:
 
 # Is this the primary user of the site?
 superuser: false
+date: '2020-11-01'
 
 # Role/position
 role: Undergraduate Honours student @ ANU

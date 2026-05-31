@@ -8,6 +8,7 @@ authors:
 
 # Is this the primary user of the site?
 superuser: false
+date: '2025-04-10'
 
 # Role/position
 role: Data Scientist @ Neuroflash

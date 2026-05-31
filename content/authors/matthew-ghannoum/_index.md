@@ -8,6 +8,7 @@ authors:
 
 # Is this the primary user of the site?
 superuser: false
+date: '2023-12-05'
 
 # Role/position
 role: Undergraduate Honours student @UTS
@@ -67,5 +68,4 @@ social:
 user_groups:
 - Alumni
 
-weight: 10
 ---

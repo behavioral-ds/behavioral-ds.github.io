@@ -8,6 +8,7 @@ authors:
 
 # Is this the primary user of the site?
 superuser: false
+date: '2022-06-29'
 
 # Role/position
 role: Research Scientist @ Alibaba DAMO Academy
@@ -68,5 +69,4 @@ social:
 user_groups:
 - Alumni
 
-weight: 10
 ---

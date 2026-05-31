@@ -8,6 +8,7 @@ authors:
 
 # Is this the primary user of the site?
 superuser: false
+date: '2021-01-22'
 
 # Role/position
 role: Senior Economist @ Burning Glass Institute

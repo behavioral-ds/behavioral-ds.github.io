@@ -8,6 +8,7 @@ authors:
 
 # Is this the primary user of the site?
 superuser: false
+date: '2022-03-01'
 
 # Role/position
 role: Graduate researcher @ Australian Federal Government

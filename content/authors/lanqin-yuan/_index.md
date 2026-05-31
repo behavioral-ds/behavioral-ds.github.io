@@ -8,16 +8,25 @@ authors:
 
 # Is this the primary user of the site?
 superuser: false
+date: '2025-12-12'
 
 # Role/position
-role: PhD student
+role: Postdoctoral Researcher @ University of Southern California
 
 # Organizations/Affiliations
 organizations:
-- name: University of Technology Sydney
+- name: (current) University of Southern California
+- name: (previous) University of Technology Sydney
 
 # Short bio (displayed in user profile at end of posts)
-bio: I am a PhD candidate at the University of Technology Sydney under the supervision of Dr Marian-Andrei Rizoiu. My research is centered around the automatic detection of problematic content (hate speech, misinformation, and disinformation), modeling the spread of problematic content, and exploring ways to address the spread of problematic content in online platforms.
+body: |
+  I am a PhD graduate from the University of Technology Sydney, supervised by Dr Marian-Andrei Rizoiu. My research is centered around the automatic detection of problematic content (hate speech, misinformation, and disinformation), modeling the spread of problematic content, and exploring ways to address the spread of problematic content in online platforms.
+
+  **Position at UTS:** Frankie completed his PhD in the Behavioral Data Science lab, submitting his thesis in December 2025. His work advanced hate speech detection through transfer learning and multi-task learning, and introduced novel behaviour-based methods using inverse reinforcement learning to detect malicious actors — including co-authoring the Best Paper at WWW'25.
+
+  **Next position after UTS:** Frankie took up a Postdoctoral Researcher position at the University of Southern California.
+
+bio: I am a PhD graduate from the University of Technology Sydney, supervised by Dr Marian-Andrei Rizoiu. My research is centered around the automatic detection of problematic content (hate speech, misinformation, and disinformation), modeling the spread of problematic content, and exploring ways to address the spread of problematic content in online platforms.
 
 interests:
 - Machine Learning
@@ -55,5 +64,5 @@ social:
 #                  "Visitors",
 #                  "Alumni"]
 user_groups:
-- PhD Students
+- Alumni
 ---

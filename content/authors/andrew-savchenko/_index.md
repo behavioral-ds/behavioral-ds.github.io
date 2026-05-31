@@ -13,6 +13,7 @@ organizations:
 
 # Is this the primary user of the site?
 superuser: false
+weight: 20
 
 # Short bio (displayed in user profile at end of posts)
 # body: | 

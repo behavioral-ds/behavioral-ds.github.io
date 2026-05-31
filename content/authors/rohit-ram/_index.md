@@ -8,13 +8,15 @@ authors:
 
 # Is this the primary user of the site?
 superuser: false
+date: '2025-12-12'
 
 # Role/position
-role: PhD student
+role: Startup Ecosystem, Canberra
 
 # Organizations/Affiliations
 organizations:
-- name: University of Technology Sydney
+- name: (current) Canberra Startup Ecosystem
+- name: (previous) University of Technology Sydney
 
 # Short bio (displayed in user profile at end of posts)
 body: |
@@ -22,7 +24,11 @@ body: |
   I'm interested in **online social behaviour and discourse modelling**, because I consider these incredibly important for understanding and mitigating modern phenomena. There are several modern challenges where this modelling helps; firstly, understanding and mitigating the spread of misinformation online (#5g #covid19 , #qanon, etc.), secondly, profiling characteristics and behaviours of online users (Voting practices, personality profiling, etc.) , and finally, identifying highly influential users and ideas. 
   I am formally trained in computer science and actuarial science, completing my Bachelor of Advanced Computing (Honours) and Bachelor of Actuarial Studies at the Australian National University in 2019. I continue to focus my learning toward statistical learning methods, data science practises, and research methods. \
   I also have a life outside of the office. In the mornings, you will find me in a headstand, doing some yoga routine. In the evenings, you'll find me curled up with a book. And on the weekends, you'll find me bouldering in an indoor climbing gym or going on adventures in the National Parks around Greater Sydney. \
-  If you're interested in my research or just want to say 'hi', **send us a message on [Twitter](https://twitter.com/rohitram96)**. 
+  If you're interested in my research or just want to say 'hi', **send us a message on [Twitter](https://twitter.com/rohitram96)**.
+
+  **Position at UTS:** Rohit completed his PhD in the Behavioral Data Science lab and was conferred in December 2025. His research advanced our understanding of online social influence, ideology detection, and information operations, with publications in top venues including ICWSM, EPJ Data Science, and WWW.
+
+  **Next position after UTS:** Rohit is embedded in Canberra's bustling startup scene.
 
 bio: Hi, I'm Rohit. I'm a **PhD candidate at the University of Technology Sydney**, interested in how people exhibit opinions and behaviours in online social environments. If you're interested in my research or just want to say 'hi', **send us a message on [Twitter](https://twitter.com/rohitram96)**. 
 
@@ -67,5 +73,5 @@ social:
 #                  "Visitors",
 #                  "Alumni"]
 user_groups:
-- PhD Students
+- Alumni
 ---

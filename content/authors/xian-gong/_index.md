@@ -8,16 +8,26 @@ authors:
 
 # Is this the primary user of the site?
 superuser: false
+date: '2026-01-01'
 
 # Role/position
-role: PhD student
+role: Data Scientist @ Online Gravity
 
 # Organizations/Affiliations
 organizations:
-- name: University of Technology Sydney
+- name: (current) Online Gravity
+  url: https://www.onlinegravity.com
+- name: (previous) University of Technology Sydney
 
 # Short bio (displayed in user profile at end of posts)
-bio: I am a PhD candidate at the University of Technology Sydney under the supervision of Dr Marian-Andrei Rizoiu and Prof Paul McCarthy. My research focus on personality prediction based on social media text and learning the relationship between personality and engagement in job market. 
+body: |
+  I am a PhD graduate from the University of Technology Sydney, supervised by Dr Marian-Andrei Rizoiu and Prof Paul McCarthy. My research focused on personality prediction based on social media text and learning the relationship between personality and engagement in job market.
+
+  **Position at UTS:** Elaine completed an Industrial Doctorate Programme (IDP) thesis at UTS, working at the intersection of industry and academia. Her research produced high-impact publications including a paper in Nature Scientific Data on the Cosmos 1.0 technology landscape map.
+
+  **Next position after UTS:** Elaine continues at [Online Gravity](https://www.onlinegravity.com), her IDP partner company.
+
+bio: I am a PhD graduate from the University of Technology Sydney, supervised by Dr Marian-Andrei Rizoiu and Prof Paul McCarthy. My research focused on personality prediction based on social media text and learning the relationship between personality and engagement in job market.
 
 interests:
 - Natural Language Processing (NLP)
@@ -61,5 +71,5 @@ social:
 #                  "Visitors",
 #                  "Alumni"]
 user_groups:
-- PhD Students
+- Alumni
 ---
