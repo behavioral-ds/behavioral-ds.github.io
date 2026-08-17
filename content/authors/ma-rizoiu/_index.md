@@ -10,7 +10,7 @@ authors:
 superuser: true
 
 # Role/position
-role: Associate Professor
+role: Professor of AI and Behavioral Data Science
 
 # Organizations/Affiliations
 organizations:
@@ -21,7 +21,7 @@ organizations:
 body: |
     <iframe width="695" height="391" src="https://www.youtube.com/embed/36mZ1EYRV6g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     
-    Marian-Andrei Rizoiu is an Associate Professor at the [UTS Data Science Institute](https://www.uts.edu.au/research/centres/data-science-institute) and Director of the [Defence Innovation Network](https://defenceinnovationnetwork.com/). He leads the [Behavioral Data Science lab](https://www.behavioral-ds.science/), where his research addresses one of democracy's pressing challenges: detecting and countering state-sponsored information operations and online misinformation. As DIN Director, he facilitates defence research collaboration across nine NSW and ACT universities, managing a $2.3M annual budget and connecting academic capabilities with defence and industry needs.
+    Marian-Andrei Rizoiu is a Professor of AI and Behavioral Data Science at the [UTS Data Science Institute](https://www.uts.edu.au/research/centres/data-science-institute) and Director of the [Defence Innovation Network](https://defenceinnovationnetwork.com/). He leads the [Behavioral Data Science lab](https://www.behavioral-ds.science/), where his research addresses one of democracy's pressing challenges: detecting and countering state-sponsored information operations and online misinformation. As DIN Director, he facilitates defence research collaboration across nine NSW and ACT universities, managing a $2.3M annual budget and connecting academic capabilities with defence and industry needs.
 
     His work combines computer science, artificial intelligence, and mathematical modelling to understand how harmful information spreads and influences society. Rather than analysing content, his research detects problematic information through behavioural patterns and writing style—an approach that works across languages and platforms. This research has direct impact: his findings have been implemented in national policy and delivered to government agencies the tools to counter online misinformation that can lead to youth radicalisation.
 
@@ -29,7 +29,7 @@ body: |
 
     His research has been recognised through multiple awards: two-time finalist for the [Australian Museum Eureka Prize](https://australian.museum/get-involved/eureka-prizes/) for Outstanding Science in Safeguarding Australia ([2024](https://australian.museum/get-involved/eureka-prizes/2024-eureka-prizes-finalists/), [2025](https://australian.museum/get-involved/eureka-prizes/2025-eureka-prizes-finalists/)), recipient of the Excellence Award and Academic of the Year at the [2023 Australian Defence Industry Awards](https://www.defenceconnect.com.au/australian-defence-industry-awards/winners/2023-winners-and-finalists), and Best Paper Award at The Web Conference 2025. His work appears regularly in major media outlets including Bloomberg Business Week, Nature Index, BBC, and World Economic Forum.
 
-    Beyond academic research, Marian-Andrei translates complex research into public discussion. He has published 16 articles in [The Conversation](https://theconversation.com/profiles/marian-andrei-rizoiu-850922) reaching 264,000+ readers, appeared on Dr Karl's "Shirtloads of Science" podcast ([Episode 1](https://www.youtube.com/watch?v=5bWlc8RCShA), [Episode 2](https://www.youtube.com/watch?v=m8fFc_1QcZ8)), and participated in international forums such as [SXSW](https://www.sxsw.com/)'s "Democracy Under Fire" panel alongside Australia's [eSafety Commissioner](https://www.esafety.gov.au/). He regularly engages with government agencies to inform policy on misinformation and information integrity.
+    Beyond academic research, Marian-Andrei translates complex research into public discussion. He has published 18 articles in [The Conversation](https://theconversation.com/profiles/marian-andrei-rizoiu-850922) reaching 264,000+ readers, appeared on Dr Karl's "Shirtloads of Science" podcast ([Episode 1](https://www.youtube.com/watch?v=5bWlc8RCShA), [Episode 2](https://www.youtube.com/watch?v=m8fFc_1QcZ8)), and participated in international forums such as [SXSW](https://www.sxsw.com/)'s "Democracy Under Fire" panel alongside Australia's [eSafety Commissioner](https://www.esafety.gov.au/). He regularly engages with government agencies to inform policy on misinformation and information integrity.
 
 interests:
 - Artificial Intelligence
