@@ -1443,4 +1443,17 @@
    year = {2026}
 }
 
+@article{Lee2026a,
+   abstract = {As large language models (LLMs) become widely used tools for online information access and verification, it is important to determine when their zero-shot flexibility is sufficient and when task-specific supervision remains valuable. We examine this question in a controlled misinformation-response classification setting comprising 900 Reddit comments associated with three PolitiFact-verified claims in environment, health, and immigration. Comments are labelled as belief (propagates the claim), fact-check (corrects it), or other. We compare nine models across three paradigms---BART-MNLI, three Llama variants, three commercial LLMs (Claude Haiku 4.5, Gemini Flash Lite 2.5, and Claude Sonnet 4.6), and fine-tuned DistilBERT and RoBERTa---under universal and topic-specific label schemas. Under the evaluated prompting and supervision conditions, fine-tuned RoBERTa reaches 0.62 macro-F1, compared with 0.50 for the best zero-shot configuration (Claude Haiku 4.5), at a fraction of the per-query cost. The supervised advantage is concentrated on the belief class, which every evaluated zero-shot model under-detects. Increasing model size does not produce consistent improvements: Llama-3-8B matches Llama-3-70B in several settings, while Claude Sonnet 4.6 underperforms the smaller Haiku model under generic labels. Sonnet's belief F1 increases substantially when generic labels are replaced with claim-specific descriptions, indicating that label formulation and claim context interact with model behaviour. Performance also varies by more than 0.13 macro-F1 across the three claim datasets under matched label conditions. For the claims, label schemas, and zero-shot configurations evaluated here, task-specific fine-tuning provides the more reliable classification strategy when labelled examples are available.},
+   author = {JooYoung Lee and Lin Tian and Angela Brillantes and Adriana-Simona Mihaita and Marian-Andrei Rizoiu},
+   doi = {10.1007/s13278-026-01633-0},
+   issn = {1869-5469},
+   journal = {Social Network Analysis and Mining},
+   month = {7},
+   title = {Long live fine-tuning: task-specific transformers outperform zero-shot LLMs for misinformation response classification on Reddit},
+   url = {https://doi.org/10.1007/s13278-026-01633-0},
+   url_Paper = {https://link.springer.com/content/pdf/10.1007/s13278-026-01633-0.pdf},
+   year = {2026}
+}
+
 
